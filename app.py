@@ -1,10 +1,11 @@
 
 import re
+from urllib.parse import quote
 import streamlit as st
 
 # ============================================================
-# PLATEFUL — GLOBAL FOOD REDISTRIBUTION PROTOTYPE
-# No Google Maps, billing, API keys, or external database needed.
+# PLATEFUL
+# Food redistribution assistant
 # ============================================================
 
 st.set_page_config(
@@ -13,24 +14,28 @@ st.set_page_config(
     layout="wide",
 )
 
-# ----------------------------
-# GLOBAL DIRECTORY
-# ----------------------------
-# These are starting points, not a guarantee that an organization
-# will accept every type/quantity/condition of food.
-# The directory is intentionally structured so it can be expanded
-# without changing the conversation logic.
+# ------------------------------------------------------------
+# DIRECTORY
+# ------------------------------------------------------------
+# Starting directory for the application. This is not a live
+# availability database. Always ask the organisation to confirm
+# that they accept the specific food, quantity, condition, timing,
+# and collection/delivery arrangement.
 
 ORGS = [
-    # India
+    # INDIA
     {"country": "India", "cities": ["Delhi", "New Delhi"], "name": "No Food Waste",
      "type": "Food rescue / redistribution", "url": "https://nofoodwaste.org/"},
     {"country": "India", "cities": ["Delhi", "New Delhi", "Mumbai", "Bengaluru", "Bangalore",
                                      "Hyderabad", "Chennai", "Kolkata", "Pune", "Ahmedabad", "Jaipur"],
-     "name": "Feeding India by Zomato", "type": "Food security / hunger relief",
+     "name": "Feeding India", "type": "Food security / hunger relief",
      "url": "https://www.feedingindia.org/"},
+    {"country": "India", "cities": ["Delhi", "New Delhi", "Mumbai", "Bengaluru", "Bangalore",
+                                     "Hyderabad", "Chennai", "Kolkata", "Pune", "Ahmedabad", "Jaipur"],
+     "name": "Robin Hood Army", "type": "Food redistribution / community support",
+     "url": "https://robinhoodarmy.com/"},
 
-    # United States
+    # UNITED STATES
     {"country": "United States", "cities": ["New York", "New York City", "NYC"],
      "name": "City Harvest", "type": "Food rescue", "url": "https://www.cityharvest.org/"},
     {"country": "United States", "cities": ["Birmingham", "New Haven", "Fairfield County",
@@ -39,220 +44,213 @@ ORGS = [
      "name": "Food Rescue US", "type": "Food rescue network",
      "url": "https://foodrescue.us/"},
 
-    # Canada
+    # CANADA
     {"country": "Canada", "cities": ["Toronto", "Vancouver", "Montreal", "Calgary",
                                      "Ottawa", "Edmonton", "Winnipeg"],
      "name": "Second Harvest", "type": "Food rescue / redistribution",
      "url": "https://www.secondharvest.ca/"},
 
-    # United Kingdom
+    # UNITED KINGDOM
     {"country": "United Kingdom", "cities": ["London", "Manchester", "Birmingham",
                                              "Liverpool", "Bristol", "Leeds", "Glasgow",
                                              "Edinburgh", "Cardiff"],
      "name": "FareShare", "type": "Food redistribution network",
      "url": "https://fareshare.org.uk/"},
 
-    # Australia
+    # AUSTRALIA
     {"country": "Australia", "cities": ["Sydney", "Melbourne", "Brisbane", "Perth",
                                          "Adelaide", "Canberra", "Gold Coast", "Cairns",
                                          "Newcastle"],
      "name": "OzHarvest", "type": "Food rescue", "url": "https://www.ozharvest.org/"},
 
-    # New Zealand
+    # NEW ZEALAND
     {"country": "New Zealand", "cities": ["Auckland", "Wellington", "Christchurch",
                                            "Hamilton", "Dunedin"],
      "name": "Kaibosh", "type": "Food rescue", "url": "https://kaibosh.org.nz/"},
 
-    # Singapore
+    # SINGAPORE
     {"country": "Singapore", "cities": ["Singapore"],
      "name": "The Food Bank Singapore", "type": "Food bank",
      "url": "https://foodbank.sg/"},
 
-    # South Africa
+    # SOUTH AFRICA
     {"country": "South Africa", "cities": ["Johannesburg", "Cape Town", "Durban",
                                             "Pretoria", "Port Elizabeth"],
      "name": "FoodForward South Africa", "type": "Food banking / redistribution",
      "url": "https://foodforwardsa.org/"},
 
-    # Kenya
+    # KENYA
     {"country": "Kenya", "cities": ["Nairobi", "Mombasa", "Kisumu"],
      "name": "Food Banking Kenya", "type": "Food banking",
      "url": "https://foodbankingkenya.org/"},
 
-    # Nigeria
+    # NIGERIA
     {"country": "Nigeria", "cities": ["Lagos", "Abuja"],
      "name": "Lagos Food Bank Initiative", "type": "Food bank / hunger relief",
      "url": "https://lagosfoodbank.org/"},
 
-    # Ghana
+    # GHANA
     {"country": "Ghana", "cities": ["Accra", "Kumasi"],
      "name": "Food For All Africa", "type": "Food banking / hunger relief",
      "url": "https://foodforallafrica.com/"},
 
-    # Indonesia
-    {"country": "Indonesia", "cities": ["Bali", "Denpasar", "Jakarta", "Surabaya",
-                                         "Medan"],
+    # INDONESIA
+    {"country": "Indonesia", "cities": ["Bali", "Denpasar", "Jakarta", "Surabaya", "Medan"],
      "name": "Scholars of Sustenance Indonesia", "type": "Food rescue",
      "url": "https://scholarsofsustenance.org/"},
     {"country": "Indonesia", "cities": ["Jakarta", "Bandung", "Surabaya", "Medan"],
      "name": "FoodCycle Indonesia", "type": "Food redistribution",
      "url": "https://foodcycle.id/"},
 
-    # Malaysia
+    # MALAYSIA
     {"country": "Malaysia", "cities": ["Kuala Lumpur", "Petaling Jaya", "George Town"],
      "name": "The Lost Food Project", "type": "Food rescue",
      "url": "https://www.thelostfoodproject.org/"},
 
-    # Brazil
+    # BRAZIL
     {"country": "Brazil", "cities": ["São Paulo", "Rio de Janeiro", "Brasília",
                                      "Salvador", "Belo Horizonte"],
      "name": "Mesa Brasil SESC", "type": "Food bank / redistribution",
      "url": "https://mesabrasil.sescsp.org.br/"},
 
-    # Mexico
+    # MEXICO
     {"country": "Mexico", "cities": ["Mexico City", "Guadalajara", "Monterrey",
                                      "Puebla", "Tijuana"],
      "name": "Bancos de Alimentos de México", "type": "Food bank network",
      "url": "https://bamx.org.mx/"},
 
-    # Argentina
+    # ARGENTINA
     {"country": "Argentina", "cities": ["Buenos Aires", "Córdoba", "Rosario"],
      "name": "Red Argentina de Bancos de Alimentos", "type": "Food bank network",
      "url": "https://redbda.org.ar/"},
 
-    # Chile
+    # CHILE
     {"country": "Chile", "cities": ["Santiago", "Valparaíso", "Concepción"],
      "name": "Red de Alimentos", "type": "Food rescue / food bank",
      "url": "https://www.redalimentos.cl/"},
 
-    # Colombia
+    # COLOMBIA
     {"country": "Colombia", "cities": ["Bogotá", "Medellín", "Cali", "Barranquilla"],
      "name": "Asociación de Bancos de Alimentos de Colombia", "type": "Food bank network",
      "url": "https://abaco.org.co/"},
 
-    # Peru
+    # PERU
     {"country": "Peru", "cities": ["Lima", "Arequipa", "Cusco"],
      "name": "Banco de Alimentos Perú", "type": "Food bank",
      "url": "https://bancodealimentosperu.org/"},
 
-    # Costa Rica
+    # COSTA RICA
     {"country": "Costa Rica", "cities": ["San José", "Heredia", "Alajuela"],
      "name": "Banco de Alimentos de Costa Rica", "type": "Food bank",
      "url": "https://www.bancodealimentos.or.cr/"},
 
-    # Ecuador
+    # ECUADOR
     {"country": "Ecuador", "cities": ["Quito", "Guayaquil", "Cuenca"],
      "name": "Banco de Alimentos Diakonía", "type": "Food bank",
      "url": "https://www.diakonia.org.ec/"},
 
-    # Uruguay
+    # URUGUAY
     {"country": "Uruguay", "cities": ["Montevideo", "Salto"],
      "name": "Banco de Alimentos Uruguay", "type": "Food bank",
      "url": "https://bancodealimentos.org.uy/"},
 
-    # Japan
+    # JAPAN
     {"country": "Japan", "cities": ["Tokyo", "Osaka", "Kyoto", "Yokohama"],
      "name": "Japan Food Bank Network", "type": "Food banking network",
      "url": "https://www.foodbanking.or.jp/"},
 
-    # South Korea
+    # SOUTH KOREA
     {"country": "South Korea", "cities": ["Seoul", "Busan", "Incheon", "Daegu"],
      "name": "Korea Foodbank", "type": "Food bank network",
      "url": "https://www.foodbank1377.org/"},
 
-    # Thailand
+    # THAILAND
     {"country": "Thailand", "cities": ["Bangkok", "Chiang Mai", "Phuket"],
      "name": "Scholars of Sustenance Thailand", "type": "Food rescue",
      "url": "https://scholarsofsustenance.org/"},
 
-    # Vietnam
+    # VIETNAM
     {"country": "Vietnam", "cities": ["Ho Chi Minh City", "Hanoi", "Da Nang"],
      "name": "Foodbank Vietnam", "type": "Food bank",
      "url": "https://foodbankvietnam.com/"},
 
-    # Philippines
+    # PHILIPPINES
     {"country": "Philippines", "cities": ["Manila", "Quezon City", "Cebu City"],
      "name": "Rise Against Hunger Philippines", "type": "Hunger relief",
      "url": "https://riseagainsthunger.org/philippines/"},
 
-    # Taiwan
+    # TAIWAN
     {"country": "Taiwan", "cities": ["Taipei", "Kaohsiung", "Taichung"],
      "name": "Taiwan People's Food Bank Association", "type": "Food bank network",
      "url": "https://www.foodbank.org.tw/"},
 
-    # Israel
+    # ISRAEL
     {"country": "Israel", "cities": ["Jerusalem", "Tel Aviv", "Haifa"],
      "name": "Leket Israel", "type": "Food rescue / food security",
      "url": "https://www.leket.org/en/"},
 
-    # Jordan
+    # JORDAN
     {"country": "Jordan", "cities": ["Amman", "Zarqa", "Irbid"],
      "name": "Tkiyet Um Ali", "type": "Food aid / hunger relief",
      "url": "https://www.tua.jo/"},
 
-    # Turkey
+    # TURKEY
     {"country": "Turkey", "cities": ["Istanbul", "Ankara", "Izmir"],
      "name": "TIDER", "type": "Food banking / social support",
      "url": "https://tider.org/"},
 
-    # Ireland
+    # IRELAND
     {"country": "Ireland", "cities": ["Dublin", "Cork", "Galway", "Limerick"],
      "name": "FoodCloud", "type": "Food redistribution platform",
      "url": "https://food.cloud/"},
 
-    # Netherlands
+    # NETHERLANDS
     {"country": "Netherlands", "cities": ["Amsterdam", "Rotterdam", "The Hague",
                                            "Utrecht", "Eindhoven"],
      "name": "Voedselbanken Nederland", "type": "Food bank network",
      "url": "https://voedselbankennederland.nl/"},
 
-    # Spain
+    # SPAIN
     {"country": "Spain", "cities": ["Madrid", "Barcelona", "Valencia", "Seville"],
      "name": "Federación Española de Bancos de Alimentos", "type": "Food bank network",
      "url": "https://www.fesbal.org/"},
 
-    # Italy
+    # ITALY
     {"country": "Italy", "cities": ["Rome", "Milan", "Naples", "Turin"],
      "name": "Banco Alimentare", "type": "Food bank network",
      "url": "https://www.bancoalimentare.it/"},
 
-    # Germany
-    {"country": "Germany", "cities": ["Berlin", "Hamburg", "Munich", "Frankfurt",
-                                       "Cologne"],
+    # GERMANY
+    {"country": "Germany", "cities": ["Berlin", "Hamburg", "Munich", "Frankfurt", "Cologne"],
      "name": "Tafel Deutschland", "type": "Food bank network",
      "url": "https://www.tafel.de/"},
 
-    # France
+    # FRANCE
     {"country": "France", "cities": ["Paris", "Lyon", "Marseille", "Toulouse"],
      "name": "Banques Alimentaires", "type": "Food bank network",
      "url": "https://www.banquealimentaire.org/"},
 
-    # Poland
+    # POLAND
     {"country": "Poland", "cities": ["Warsaw", "Kraków", "Wrocław", "Gdańsk"],
      "name": "Federacja Polskich Banków Żywności", "type": "Food bank network",
      "url": "https://bankizywnosci.pl/"},
 
-    # Bulgaria
+    # BULGARIA
     {"country": "Bulgaria", "cities": ["Sofia", "Plovdiv", "Varna"],
      "name": "Bulgarian Food Bank", "type": "Food bank",
      "url": "https://foodbank.bg/"},
 
-    # Ethiopia
+    # ETHIOPIA
     {"country": "Ethiopia", "cities": ["Addis Ababa"],
      "name": "It Rains Food Bank of Ethiopia", "type": "Food bank",
      "url": "https://itrainsfoodbank.org/"},
 
-    # Mauritius
+    # MAURITIUS
     {"country": "Mauritius", "cities": ["Port Louis", "Quatre Bornes"],
      "name": "FoodWise", "type": "Food rescue",
      "url": "https://www.foodwise.mu/"},
-
-    # New countries can be added here without changing the app logic.
 ]
 
-# ----------------------------
-# NORMALIZATION / ALIASES
-# ----------------------------
 CITY_ALIASES = {
     "new delhi": "Delhi",
     "delhi": "Delhi",
@@ -272,47 +270,30 @@ CITY_ALIASES = {
     "la": "Los Angeles",
     "washington dc": "Washington",
     "dc": "Washington",
-    "são paulo": "São Paulo",
     "sao paulo": "São Paulo",
     "mexico city": "Mexico City",
     "ho chi minh": "Ho Chi Minh City",
 }
 
-COUNTRY_ALIASES = {
-    "usa": "United States",
-    "us": "United States",
-    "u.s.": "United States",
-    "america": "United States",
-    "uk": "United Kingdom",
-    "england": "United Kingdom",
-    "britain": "United Kingdom",
-    "uae": "United Arab Emirates",
-    "emirates": "United Arab Emirates",
-    "korea": "South Korea",
-}
-
 def clean(text):
-    return re.sub(r"\s+", " ", text.lower().strip())
+    return re.sub(r"\s+", " ", str(text).lower().strip())
 
 def canonical_city(text):
-    t = clean(text)
-    return CITY_ALIASES.get(t, text.strip().title())
+    value = clean(text)
+    return CITY_ALIASES.get(value, str(text).strip().title())
 
 def detect_city(text):
     t = clean(text)
 
-    # Longest city names first so "New York City" wins over "York".
     all_cities = set()
     for org in ORGS:
         all_cities.update(org["cities"])
     all_cities.update(CITY_ALIASES.keys())
 
     for city in sorted(all_cities, key=len, reverse=True):
-        pattern = r"(?<!\w)" + re.escape(city.lower()) + r"(?!\w)"
-        if re.search(pattern, t):
+        if re.search(r"(?<!\w)" + re.escape(city.lower()) + r"(?!\w)", t):
             return canonical_city(city)
 
-    # Common natural-language location phrases.
     patterns = [
         r"\bin\s+([a-zA-ZÀ-ÿ][a-zA-ZÀ-ÿ .'-]{1,40})",
         r"\bfrom\s+([a-zA-ZÀ-ÿ][a-zA-ZÀ-ÿ .'-]{1,40})",
@@ -329,13 +310,12 @@ def detect_city(text):
     }
 
     for pattern in patterns:
-        m = re.search(pattern, t)
-        if m:
-            candidate = m.group(1).strip(" .,!?:;")
-            # Don't accidentally turn "in my city" into a location.
+        match = re.search(pattern, t)
+        if match:
+            candidate = match.group(1).strip(" .,!?:;")
+            candidate = candidate.split(" and ")[0].strip()
+            candidate = candidate.split(" where ")[0].strip()
             if candidate and candidate.split()[0] not in stop_words:
-                candidate = candidate.split(" and ")[0].strip()
-                candidate = candidate.split(" where ")[0].strip()
                 return canonical_city(candidate)
 
     return None
@@ -347,7 +327,7 @@ def detect_intent(text):
         "where", "find", "near", "ngo", "charity", "food bank", "foodbank",
         "organization", "organisation", "centre", "center", "donate",
         "donation", "give", "collect", "pickup", "pick up", "redistribute",
-        "redistribution", "food rescue", "food rescue", "who can take"
+        "redistribution", "food rescue", "who can take"
     ]
 
     surplus_words = [
@@ -374,136 +354,94 @@ def find_orgs(city):
     if not city:
         return []
 
-    city_clean = clean(city)
-    matches = []
-
-    for org in ORGS:
-        city_matches = [clean(c) for c in org["cities"]]
-        if city_clean in city_matches:
-            matches.append(org)
-
-    # Also match a city entered as an exact alias.
     canonical = canonical_city(city)
+    results = []
+
     for org in ORGS:
         if any(clean(c) == clean(canonical) for c in org["cities"]):
-            if org not in matches:
-                matches.append(org)
+            results.append(org)
 
-    return matches
+    return results
 
-def find_country_hint(text):
-    t = clean(text)
-    for alias, country in COUNTRY_ALIASES.items():
-        if re.search(r"(?<!\w)" + re.escape(alias) + r"(?!\w)", t):
-            return country
-    for org in ORGS:
-        if re.search(r"(?<!\w)" + re.escape(org["country"].lower()) + r"(?!\w)", t):
-            return org["country"]
-    return None
+# ------------------------------------------------------------
+# DONATION REQUEST
+# ------------------------------------------------------------
 
-# ----------------------------
-# RESPONSE ENGINE
-# ----------------------------
-def answer_user(message):
-    intent = detect_intent(message)
-    city = detect_city(message)
+def create_email_link(org, name, email, food, quantity, city, notes):
+    subject = f"Food donation request — {city}"
+    body = f"""Hello {org['name']},
 
-    if intent == "greeting":
-        return (
-            "Hey! I'm Plateful 👋\n\n"
-            "I help turn surplus food into useful food redistribution. "
-            "Tell me what food you have and, if you want local options, "
-            "include your city.\n\n"
-            "For example: **“We have 20 leftover meals in Toronto. Who can take them?”**"
-        ), None, None
+I would like to enquire about donating surplus food in {city}.
 
-    if intent == "surplus":
-        return (
-            "Absolutely — Plateful can help with surplus food.\n\n"
-            "First, tell me **which city you're in**. I can then look for "
-            "food banks, food-rescue groups or redistribution organizations "
-            "in that area.\n\n"
-            "Example: **“I have 15 leftover meals in London.”**"
-        ), None, None
+Donor name: {name}
+Donor email: {email}
+Food: {food}
+Quantity: {quantity}
+Location: {city}
+Additional details: {notes}
 
-    if intent in ("find", "surplus_location"):
-        if not city:
-            country = find_country_hint(message)
-            if country:
-                return (
-                    f"I know you're looking in **{country}**, but I need the "
-                    "city to give you more useful local options.\n\n"
-                    "For example: **“food donation in Toronto”**."
-                ), None, None
+Could you please let me know whether you can accept this donation and whether collection or drop-off is possible?
 
-            return (
-                "I can help find a local food-rescue or food-bank option. "
-                "What **city** are you in?"
-            ), None, None
-
-        orgs = find_orgs(city)
-
-        if orgs:
-            intro = (
-                f"I found **{len(orgs)} starting point"
-                f"{'s' if len(orgs) != 1 else ''} for {city}.**"
-            )
-            return intro, city, orgs
-
-        # Global fallback: don't pretend the directory is complete.
-        return (
-            f"I don't currently have a verified organization in my prototype "
-            f"directory for **{city}**.\n\n"
-            "That doesn't mean there isn't one. For a real deployment, "
-            "Plateful should connect to a live food-rescue/food-bank directory "
-            "to discover local organizations dynamically.\n\n"
-            "For now, try searching locally for **food banks, food rescue "
-            "organizations, community food programs, or surplus-food charities**, "
-            "and contact them first to confirm they accept your food."
-        ), city, []
+Thank you,
+{name}
+"""
 
     return (
-        "I can help with food donation and redistribution.\n\n"
-        "Try something like:\n"
-        "- “Where can I donate food in Delhi?”\n"
-        "- “I have 20 leftover meals in Toronto.”\n"
-        "- “Our restaurant has surplus food in London.”\n"
-        "- “Who can collect extra food in Sydney?”"
-    ), None, None
+        f"mailto:?subject={quote(subject)}&body={quote(body)}"
+    )
 
-# ----------------------------
+# ------------------------------------------------------------
 # SESSION STATE
-# ----------------------------
-if "messages" not in st.session_state:
-    st.session_state.messages = []
+# ------------------------------------------------------------
 
-if "last_results" not in st.session_state:
-    st.session_state.last_results = []
+defaults = {
+    "messages": [],
+    "last_results": [],
+    "last_city": None,
+    "request_recorded": False,
+    "selected_org": None,
+}
 
-if "last_city" not in st.session_state:
-    st.session_state.last_city = None
+for key, value in defaults.items():
+    if key not in st.session_state:
+        st.session_state[key] = value
 
-# ----------------------------
+# ------------------------------------------------------------
 # STYLING
-# ----------------------------
+# ------------------------------------------------------------
+
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap');
 
+:root {
+    --bg: #DCE8E3;
+    --surface: #F0E8E2;
+    --surface-2: #E8DDD8;
+    --ink: #29453F;
+    --muted: #5F716C;
+    --teal: #4E756B;
+    --teal-dark: #385B53;
+    --terracotta: #B96F57;
+    --terracotta-dark: #965642;
+    --lavender: #D9D5E7;
+    --line: #B8C9C3;
+}
+
 .stApp {
-    background: #F4F1E9;
-    color: #20201D;
+    background: var(--bg);
+    color: var(--ink);
 }
 
 .block-container {
-    max-width: 1180px;
-    padding-top: 2rem;
+    max-width: 1240px;
+    padding-top: 1.8rem;
     padding-bottom: 4rem;
 }
 
 h1, h2, h3 {
     font-family: 'Playfair Display', Georgia, serif !important;
-    color: #20201D !important;
+    color: var(--ink) !important;
 }
 
 p, div, span, label, button, input, textarea {
@@ -512,145 +450,221 @@ p, div, span, label, button, input, textarea {
 
 .plateful-brand {
     font-family: 'Playfair Display', Georgia, serif;
-    font-size: 2.2rem;
+    font-size: 2.25rem;
     font-weight: 600;
     letter-spacing: -1px;
+    color: var(--ink);
 }
 
-.badge {
+.app-tag {
     display: inline-block;
     margin-left: 12px;
-    padding: 6px 11px;
-    border: 1px solid #B68A3A;
+    padding: 6px 12px;
     border-radius: 999px;
-    color: #765A28;
+    background: var(--lavender);
+    color: var(--ink);
     font-size: .75rem;
+    font-weight: 600;
     letter-spacing: .04em;
-    vertical-align: middle;
 }
 
 .hero {
-    margin-top: 55px;
-    padding: 50px 0 38px;
-    border-bottom: 1px solid #D9D3C6;
+    margin-top: 38px;
+    padding: 42px 46px 44px;
+    border-radius: 28px;
+    background: #C8DCD5;
+    border: 1px solid var(--line);
 }
 
 .hero h1 {
-    font-size: clamp(3rem, 7vw, 6.3rem) !important;
+    font-size: clamp(3rem, 7vw, 6rem) !important;
     line-height: .96;
-    max-width: 950px;
-    margin-bottom: 22px;
+    max-width: 900px;
+    margin: 12px 0 22px;
 }
 
 .hero p {
-    max-width: 680px;
+    max-width: 690px;
     font-size: 1.08rem;
     line-height: 1.7;
-    color: #625F57;
+    color: var(--muted);
 }
 
 .section-label {
-    color: #A1782E;
+    color: var(--terracotta-dark);
     font-size: .75rem;
     letter-spacing: .16em;
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .step {
-    padding: 22px 4px 30px;
-    border-bottom: 1px solid #D9D3C6;
+    margin-top: 20px;
+    padding: 22px 20px 26px;
+    border-radius: 18px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    min-height: 145px;
 }
 
 .step-number {
-    color: #B68A3A;
+    color: var(--terracotta);
     font-size: .8rem;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .step-title {
     font-family: 'Playfair Display', Georgia, serif;
-    font-size: 1.45rem;
+    font-size: 1.4rem;
     margin-top: 7px;
 }
 
 .step-copy {
-    color: #6B675E;
-    line-height: 1.6;
-    margin-top: 5px;
+    color: var(--muted);
+    line-height: 1.55;
+    margin-top: 6px;
+}
+
+.chat-shell {
+    background: #E9E1E0;
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    padding: 18px;
+    margin-top: 10px;
 }
 
 .org-card {
-    background: #FAF8F2;
-    border: 1px solid #D9D3C6;
+    background: var(--surface);
+    border: 1px solid var(--line);
     border-radius: 18px;
-    padding: 23px;
-    margin: 12px 0;
+    padding: 22px;
+    margin: 13px 0;
 }
 
 .org-name {
     font-family: 'Playfair Display', Georgia, serif;
     font-size: 1.4rem;
+    color: var(--ink);
 }
 
 .org-type {
-    color: #776C59;
+    color: var(--muted);
     font-size: .9rem;
     margin-top: 5px;
 }
 
 .notice {
-    background: #ECE7DA;
-    border-left: 3px solid #B68A3A;
+    background: #E8D8C9;
+    border-left: 4px solid var(--terracotta);
     padding: 15px 18px;
-    margin-top: 18px;
-    color: #5E594F;
+    margin: 18px 0;
+    color: #624E46;
     line-height: 1.55;
-    border-radius: 0 10px 10px 0;
+    border-radius: 0 12px 12px 0;
+}
+
+.request-box {
+    background: #D2DED9;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 23px;
+    margin-top: 20px;
+}
+
+.request-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.5rem;
+    color: var(--ink);
+}
+
+.small-copy {
+    color: var(--muted);
+    line-height: 1.55;
 }
 
 .footer {
-    margin-top: 80px;
-    padding-top: 25px;
-    border-top: 1px solid #D9D3C6;
-    color: #777166;
-    font-size: .85rem;
+    margin-top: 70px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: .84rem;
+}
+
+/* Streamlit controls */
+.stButton > button,
+.stLinkButton > a {
+    border-radius: 999px !important;
+    border: 1px solid var(--teal) !important;
+    background: var(--teal) !important;
+    color: #EEF4F1 !important;
+    font-weight: 600 !important;
+}
+
+.stButton > button:hover,
+.stLinkButton > a:hover {
+    background: var(--teal-dark) !important;
+    border-color: var(--teal-dark) !important;
+}
+
+[data-testid="stChatMessage"] {
+    background: rgba(240, 232, 226, .78);
+    border: 1px solid rgba(184, 201, 195, .8);
+    border-radius: 18px;
+    margin-bottom: 9px;
+}
+
+[data-testid="stChatInput"] {
+    border-color: var(--teal) !important;
+}
+
+input, textarea {
+    background: #EFE5E1 !important;
+    color: var(--ink) !important;
+    border-color: var(--line) !important;
+}
+
+div[data-baseweb="input"] {
+    background: #EFE5E1 !important;
 }
 </style>
 """, unsafe_allow_html=True)
 
-# ----------------------------
+# ------------------------------------------------------------
 # HEADER
-# ----------------------------
+# ------------------------------------------------------------
+
 st.markdown(
     '<span class="plateful-brand">plateful.</span>'
-    '<span class="badge">GLOBAL PROTOTYPE</span>',
+    '<span class="app-tag">FOOD · PEOPLE · IMPACT</span>',
     unsafe_allow_html=True
 )
 
-# ----------------------------
+# ------------------------------------------------------------
 # HERO
-# ----------------------------
+# ------------------------------------------------------------
+
 st.markdown("""
 <div class="hero">
-    <div class="section-label">Food redistribution · worldwide</div>
-    <h1>Food should find a table, not a bin.</h1>
+    <div class="section-label">Food redistribution</div>
+    <h1>Good food deserves a second destination.</h1>
     <p>
-        Plateful helps people, restaurants and event organizers figure out
-        what to do with safe surplus food — and find organizations that may
-        be able to redistribute it.
+        Plateful helps people, restaurants and event organisers turn surplus
+        food into meaningful redistribution by understanding the situation
+        and finding relevant organisations.
     </p>
 </div>
 """, unsafe_allow_html=True)
 
-# ----------------------------
+# ------------------------------------------------------------
 # HOW IT WORKS
-# ----------------------------
+# ------------------------------------------------------------
+
 cols = st.columns(3)
+
 steps = [
-    ("01", "Tell us", "Describe your surplus food and where you are."),
-    ("02", "We understand", "Plateful detects the situation, quantity and location from natural language."),
-    ("03", "Find a path", "We surface food-rescue and food-bank starting points in the area."),
+    ("01", "Tell us", "Describe your food, quantity and location naturally."),
+    ("02", "We understand", "Plateful identifies the situation and the local need."),
+    ("03", "Take action", "Find an organisation, record your request and prepare a donation enquiry."),
 ]
 
 for col, (num, title, copy) in zip(cols, steps):
@@ -665,44 +679,97 @@ for col, (num, title, copy) in zip(cols, steps):
         )
 
 st.write("")
-
-# ----------------------------
-# CHAT
-# ----------------------------
 st.markdown('<div class="section-label">Talk to Plateful</div>', unsafe_allow_html=True)
-st.markdown("### Tell me what is happening")
+st.markdown("### What is happening?")
+
+# ------------------------------------------------------------
+# CHAT
+# ------------------------------------------------------------
 
 for msg in st.session_state.messages:
     with st.chat_message(msg["role"]):
         st.markdown(msg["content"])
 
 prompt = st.chat_input(
-    "e.g. We have 20 leftover meals in Toronto. Who can take them?"
+    "Try: We have 20 leftover meals in Toronto. Who can take them?"
 )
 
 if prompt:
     st.session_state.messages.append({"role": "user", "content": prompt})
 
-    reply, city, orgs = answer_user(prompt)
+    intent = detect_intent(prompt)
+    city = detect_city(prompt)
+
+    if intent == "greeting":
+        reply = (
+            "Hi! I'm Plateful 🌱\n\n"
+            "Tell me about your surplus food and where you are. "
+            "I can help you find food-rescue or food-bank organisations "
+            "and guide you through making a donation request."
+        )
+        orgs = []
+
+    elif intent == "surplus":
+        reply = (
+            "Absolutely. I can help you work out what to do with the surplus food.\n\n"
+            "Tell me **which city you're in**, and I'll look for relevant "
+            "food-rescue or food-bank organisations there."
+        )
+        orgs = []
+
+    elif intent in ("find", "surplus_location"):
+        if not city:
+            reply = (
+                "I can help find a local organisation. "
+                "What **city** are you in?"
+            )
+            orgs = []
+        else:
+            orgs = find_orgs(city)
+
+            if orgs:
+                reply = (
+                    f"I found **{len(orgs)} organisation"
+                    f"{'s' if len(orgs) != 1 else ''} to start with in **{city}**.\n\n"
+                    "You can open an organisation's website, or record a donation "
+                    "request below and prepare a message for them."
+                )
+            else:
+                reply = (
+                    f"I don't currently have a verified organisation in my "
+                    f"prototype directory for **{city}**.\n\n"
+                    "That does not mean there isn't one. A full deployment of "
+                    "Plateful should connect to a live directory so it can "
+                    "discover local organisations dynamically."
+                )
+    else:
+        reply = (
+            "I can help with food donation and redistribution.\n\n"
+            "Try:\n"
+            "- “Where can I donate food in Delhi?”\n"
+            "- “I have 20 leftover meals in Toronto.”\n"
+            "- “Our restaurant has surplus food in London.”\n"
+            "- “Who can collect extra food in Sydney?”"
+        )
+        orgs = []
 
     st.session_state.last_city = city
-    st.session_state.last_results = orgs or []
-
+    st.session_state.last_results = orgs
     st.session_state.messages.append({"role": "assistant", "content": reply})
-
     st.rerun()
 
-# ----------------------------
-# ORGANIZATION RESULTS
-# ----------------------------
+# ------------------------------------------------------------
+# ORGANISATIONS
+# ------------------------------------------------------------
+
 if st.session_state.last_results:
     st.markdown("---")
     st.markdown(
-        f'<div class="section-label">Starting points in {st.session_state.last_city}</div>',
+        f'<div class="section-label">Organisations in {st.session_state.last_city}</div>',
         unsafe_allow_html=True
     )
 
-    for org in st.session_state.last_results:
+    for index, org in enumerate(st.session_state.last_results):
         st.markdown(
             f'<div class="org-card">'
             f'<div class="org-name">{org["name"]}</div>'
@@ -710,25 +777,150 @@ if st.session_state.last_results:
             f'</div>',
             unsafe_allow_html=True
         )
-        st.link_button(f"Visit {org['name']}", org["url"])
+
+        c1, c2 = st.columns([1, 1])
+
+        with c1:
+            st.link_button(
+                f"Visit {org['name']}",
+                org["url"],
+                use_container_width=True
+            )
+
+        with c2:
+            if st.button(
+                "Record a donation request",
+                key=f"record_{index}",
+                use_container_width=True
+            ):
+                st.session_state.selected_org = index
+                st.session_state.request_recorded = True
+                st.rerun()
 
     st.markdown(
         '<div class="notice">'
-        '<strong>Important:</strong> Plateful is a prototype directory. '
-        'An organization may have specific rules about food type, preparation, '
-        'packaging, quantity, timing and pickup. Always contact the organization '
-        'before arranging a donation and confirm that your specific food is accepted.'
+        '<strong>Before arranging anything:</strong> contact the organisation '
+        'to confirm that it accepts your specific food type, quantity, condition, '
+        'packaging and timing. Plateful does not guarantee pickup or acceptance.'
         '</div>',
         unsafe_allow_html=True
     )
 
-# ----------------------------
+# ------------------------------------------------------------
+# REQUEST FORM
+# ------------------------------------------------------------
+
+if st.session_state.request_recorded and st.session_state.last_results:
+    org = st.session_state.last_results[st.session_state.selected_org]
+    city = st.session_state.last_city
+
+    st.markdown("---")
+
+    st.markdown(
+        '<div class="request-box">'
+        '<div class="section-label">Donation request</div>'
+        '<div class="request-title">Let’s turn this into an action.</div>'
+        '<p class="small-copy">'
+        f'You are preparing a request for <strong>{org["name"]}</strong> in '
+        f'<strong>{city}</strong>.'
+        '</p>'
+        '</div>',
+        unsafe_allow_html=True
+    )
+
+    with st.form("donation_request_form"):
+        name = st.text_input("Your name", placeholder="e.g. Demo User")
+        email = st.text_input("Your email", placeholder="e.g. demo@example.com")
+        food = st.text_input(
+            "What food do you have?",
+            placeholder="e.g. freshly prepared vegetarian meals"
+        )
+        quantity = st.text_input(
+            "Approximate quantity",
+            placeholder="e.g. 20 meals"
+        )
+        notes = st.text_area(
+            "Anything else the organisation should know?",
+            placeholder="e.g. Prepared today, individually packed, available this evening."
+        )
+
+        submitted = st.form_submit_button(
+            "Create donation request",
+            use_container_width=True
+        )
+
+    if submitted:
+        if not name or not email or not food or not quantity:
+            st.warning("Please fill in your name, email, food and quantity.")
+        else:
+            st.session_state.donation_request = {
+                "name": name,
+                "email": email,
+                "food": food,
+                "quantity": quantity,
+                "city": city,
+                "notes": notes,
+                "organisation": org["name"],
+            }
+
+            st.success(
+                f"Donation request prepared for {org['name']}."
+            )
+
+            email_link = create_email_link(
+                org, name, email, food, quantity, city, notes
+            )
+
+            st.markdown(
+                '<div class="request-box">'
+                '<div class="request-title">Next step</div>'
+                '<p class="small-copy">'
+                'The app cannot silently send an email on your behalf. '
+                'Use the button below to open your email app with the request '
+                'already written, then review and send it.'
+                '</p>'
+                '</div>',
+                unsafe_allow_html=True
+            )
+
+            st.link_button(
+                f"Prepare email for {org['name']}",
+                email_link,
+                use_container_width=True
+            )
+
+            st.info(
+                "For a demo, use placeholder contact details rather than real personal information."
+            )
+
+# ------------------------------------------------------------
+# FALLBACK / EMPTY DIRECTORY NOTE
+# ------------------------------------------------------------
+
+if (
+    st.session_state.last_city
+    and not st.session_state.last_results
+    and detect_intent(
+        st.session_state.messages[-1]["content"]
+    ) in ("find", "surplus_location")
+):
+    st.markdown(
+        '<div class="notice">'
+        '<strong>How the full application can grow:</strong> '
+        'the current directory is structured so a live organisation-discovery '
+        'service can be connected later without redesigning the conversation flow.'
+        '</div>',
+        unsafe_allow_html=True
+    )
+
+# ------------------------------------------------------------
 # FOOTER
-# ----------------------------
+# ------------------------------------------------------------
+
 st.markdown(
     '<div class="footer">'
-    'Plateful is a prototype concept for reducing food waste and improving food redistribution. '
-    'The directory is curated starting data and is not a live availability or pickup service.'
+    'Plateful helps connect surplus food with possible redistribution pathways. '
+    'Organisation listings are starting data, not live availability.'
     '</div>',
     unsafe_allow_html=True
 )
