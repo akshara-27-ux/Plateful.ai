@@ -17,10 +17,14 @@ st.set_page_config(
 # VERIFIED DIRECTORY
 # ------------------------------------------------------------
 ORGS = [
-    # INDIA
+    # ------------------------------------------------------------
+    # INDIA — PAN-INDIA & MULTI-CITY PLATFORMS
+    # ------------------------------------------------------------
     {
         "country": "India",
-        "cities": ["Delhi", "New Delhi", "Chennai", "Bengaluru", "Coimbatore", "Hyderabad"],
+        "state": "Multi-State",
+        "cities": ["Delhi", "New Delhi", "Chennai", "Bengaluru", "Coimbatore", "Hyderabad", "Tadepalligudem"],
+        "neighborhoods": ["Connaught Place", "Dwarka", "Indiranagar", "Koramangala", "T Nagar", "Adyar", "Banjara Hills", "Hitec City", "RS Puram", "Gandhipuram"],
         "name": "No Food Waste",
         "type": "Surplus Food Rescue & Delivery",
         "url": "https://nofoodwaste.org/",
@@ -28,7 +32,9 @@ ORGS = [
     },
     {
         "country": "India",
-        "cities": ["Delhi", "New Delhi", "Mumbai", "Bengaluru", "Hyderabad", "Chennai", "Kolkata", "Pune", "Ahmedabad", "Jaipur", "Chandigarh", "Lucknow"],
+        "state": "Multi-State",
+        "cities": ["Delhi", "New Delhi", "Mumbai", "Bengaluru", "Hyderabad", "Chennai", "Kolkata", "Pune", "Ahmedabad", "Jaipur", "Chandigarh", "Lucknow", "Indore", "Kochi", "Bhopal", "Visakhapatnam", "Nagpur", "Patna", "Ludhiana", "Agra", "Nashik", "Vadodara", "Varanasi"],
+        "neighborhoods": ["Bandra", "Andheri", "Juhu", "Hauz Khas", "Saket", "Whitefield", "Jayanagar", "Salt Lake", "Park Street", "Gomti Nagar", "Hazratganj", "C-Scheme", "Malviya Nagar"],
         "name": "Feeding India (by Zomato)",
         "type": "Hunger Relief & Large Redistribution Network",
         "url": "https://www.feedingindia.org/",
@@ -36,17 +42,168 @@ ORGS = [
     },
     {
         "country": "India",
-        "cities": ["Delhi", "New Delhi", "Mumbai", "Bengaluru", "Hyderabad", "Chennai", "Kolkata", "Pune", "Ahmedabad", "Jaipur"],
+        "state": "Multi-State",
+        "cities": ["Delhi", "New Delhi", "Mumbai", "Bengaluru", "Hyderabad", "Chennai", "Kolkata", "Pune", "Ahmedabad", "Jaipur", "Guwahati", "Bhubaneswar", "Dehradun", "Amritsar", "Ranchi", "Surat", "Goa"],
+        "neighborhoods": ["Colaba", "Dadar", "Powai", "Rohini", "Karol Bagh", "HSR Layout", "Indiranagar", "Kothrud", "Viman Nagar", "Panaji", "Margao", "Paltan Bazaar"],
         "name": "Robin Hood Army",
         "type": "Volunteer-Driven Food Rescue",
         "url": "https://robinhoodarmy.com/",
         "contact_email": "info@robinhoodarmy.com",
     },
 
+    # ------------------------------------------------------------
+    # INDIA — REGIONAL & STATE-SPECIFIC ORGANIZATIONS
+    # ------------------------------------------------------------
+    {
+        "country": "India",
+        "state": "Kerala",
+        "cities": ["Kochi", "Ernakulam", "Thiruvananthapuram", "Kozhikode", "Thrissur"],
+        "neighborhoods": ["Kakkanad", "Edappally", "Fort Kochi", "MG Road", "Pattom", "Kazhakoottam", "Technopark", "Mananchira"],
+        "name": "Anbodu Kochi & Nanma Maram Community Fridges",
+        "type": "Urban Community Fridges & Excess Food Rescue",
+        "url": "https://www.facebook.com/AnboduKochi/",
+        "contact_email": "anbodukochi@gmail.com",
+    },
+    {
+        "country": "India",
+        "state": "Tamil Nadu",
+        "cities": ["Madurai", "Tiruchirappalli", "Salem", "Tirunelveli"],
+        "neighborhoods": ["KK Nagar", "Anna Nagar", "Thillai Nagar", "Cantonment", "Fairlands"],
+        "name": "Aram Porul Foundation",
+        "type": "Regional Surplus Food Collection",
+        "url": "https://aramporul.org/",
+        "contact_email": "contact@aramporul.org",
+    },
+    {
+        "country": "India",
+        "state": "Karnataka",
+        "cities": ["Bengaluru", "Mysuru", "Mangaluru"],
+        "neighborhoods": ["Malleshwaram", "Basavanagudi", "Electronic City", "Hebbal", "Gokulam", "Jayalakshmipuram", "Hampankatta", "Kadri"],
+        "name": "Hasiru Dala Community Feeds",
+        "type": "Waste Worker & Surplus Redistribution",
+        "url": "https://hasirudala.in/",
+        "contact_email": "info@hasirudala.in",
+    },
+    {
+        "country": "India",
+        "state": "Maharashtra",
+        "cities": ["Mumbai", "Thane", "Navi Mumbai"],
+        "neighborhoods": ["Dharavi", "Ghatkopar", "Borivali", "Chembur", "Vashi", "Nerul", "Thane West", "Ghansoli"],
+        "name": "Roti Bank by Dabbawalas",
+        "type": "Cooked Surplus & Event Food Redistribution",
+        "url": "https://rotibankfoundation.org/",
+        "contact_email": "info@rotibankfoundation.org",
+    },
+    {
+        "country": "India",
+        "state": "Telangana",
+        "cities": ["Hyderabad", "Secunderabad", "Warangal"],
+        "neighborhoods": ["Madhapur", "Gachibowli", "Kukatpally", "Begumpet", "Jubilee Hills", "Charminar", "Hanamkonda"],
+        "name": "Apple Homes (Feed The Needy)",
+        "type": "Community Refrigerators & Night Drives",
+        "url": "https://feedtheneedy.in/",
+        "contact_email": "support@feedtheneedy.in",
+    },
+    {
+        "country": "India",
+        "state": "West Bengal",
+        "cities": ["Kolkata", "Howrah"],
+        "neighborhoods": ["Ballygunge", "Gariahat", "New Town", "Shyambazar", "Howrah Station", "Dum Dum"],
+        "name": "Sanjhbati Food Bank & Relief",
+        "type": "Community Food Pantry & Surplus Rescue",
+        "url": "https://sanjhbati.org/",
+        "contact_email": "contact@sanjhbati.org",
+    },
+    {
+        "country": "India",
+        "state": "Odisha",
+        "cities": ["Bhubaneswar", "Cuttack", "Puri"],
+        "neighborhoods": ["Saheed Nagar", "Patia", "Khandagiri", "Badambadi", "CDA Sector", "Grand Road"],
+        "name": "Aahwahan Foundation (Odisha Chapter)",
+        "type": "Event Surplus Recovery",
+        "url": "https://aahwahan.com/",
+        "contact_email": "info@aahwahan.com",
+    },
+    {
+        "country": "India",
+        "state": "Assam",
+        "cities": ["Guwahati", "Dispur", "Silchar", "Dibrugarh"],
+        "neighborhoods": ["Paltan Bazaar", "GS Road", "Pan Bazaar", "Ganeshguri", "Beltola", "Zoo Road"],
+        "name": "Ubanta Foundation",
+        "type": "North-East Food Rescue Network",
+        "url": "https://ubantafoundation.org/",
+        "contact_email": "relief@ubantafoundation.org",
+    },
+    {
+        "country": "India",
+        "state": "Punjab",
+        "cities": ["Chandigarh", "Mohali", "Panchkula", "Ludhiana", "Amritsar", "Jalandhar"],
+        "neighborhoods": ["Sector 17", "Sector 35", "Phase 7 Mohali", "Model Town", "Ranjit Avenue", "Civil Lines"],
+        "name": "Voice of Amritsar (Sanjhi Rasoi)",
+        "type": "Community Kitchen & Wedding Surplus Recovery",
+        "url": "https://voiceofamritsar.org/",
+        "contact_email": "voaamritsar@gmail.com",
+    },
+    {
+        "country": "India",
+        "state": "Rajasthan",
+        "cities": ["Jaipur", "Jodhpur", "Udaipur", "Kota"],
+        "neighborhoods": ["Vaishali Nagar", "Mansarovar", "Raja Park", "Sardarpura", "Fateh Sagar", "Talwandi"],
+        "name": "Annakshetra Foundation Trust",
+        "type": "Surplus Wedding/Event Food Harvesting",
+        "url": "https://annakshetra.org/",
+        "contact_email": "info@annakshetra.org",
+    },
+    {
+        "country": "India",
+        "state": "Gujarat",
+        "cities": ["Ahmedabad", "Surat", "Vadodara", "Rajkot"],
+        "neighborhoods": ["Navrangpura", "Satellite", "Bodakdev", "SG Highway", "Athwa", "Vesu", "Alkapuri"],
+        "name": "Annamrita Foundation Gujarat",
+        "type": "Institutional Food Relief & Redistribution",
+        "url": "https://annamrita.org/",
+        "contact_email": "info.gujarat@annamrita.org",
+    },
+    {
+        "country": "India",
+        "state": "Uttar Pradesh",
+        "cities": ["Lucknow", "Noida", "Greater Noida", "Ghaziabad", "Kanpur", "Varanasi", "Patna"],
+        "neighborhoods": ["Sector 18 Noida", "Sector 62", "Indirapuram", "Raj Nagar", "Swaroop Nagar", "Lanka", "Kankarbagh", "Boring Road"],
+        "name": "Roti Bank Hope",
+        "type": "Banquet & Household Surplus Rescue",
+        "url": "https://rotibankhope.org/",
+        "contact_email": "contact@rotibankhope.org",
+    },
+    {
+        "country": "India",
+        "state": "Madhya Pradesh",
+        "cities": ["Indore", "Bhopal", "Gwalior", "Jabalpur"],
+        "neighborhoods": ["Vijay Nagar", "Palasia", "Chhappan Dukan", "MP Nagar", "Arera Colony"],
+        "name": "Aahra Food Bank MP",
+        "type": "Catering Redistribution Network",
+        "url": "https://aahrafoundation.org/",
+        "contact_email": "support@aahrafoundation.org",
+    },
+    {
+        "country": "India",
+        "state": "Jammu & Kashmir",
+        "cities": ["Srinagar", "Jammu"],
+        "neighborhoods": ["Lal Chowk", "Rajbagh", "Hyderpora", "Gandhi Nagar", "Trikufta Nagar"],
+        "name": "Athrout Kashmir Food Relief",
+        "type": "Community Food Distribution & Rations",
+        "url": "https://athrout.org/",
+        "contact_email": "office@athrout.org",
+    },
+
+    # ------------------------------------------------------------
+    # INTERNATIONAL DIRECTORY
+    # ------------------------------------------------------------
     # UNITED STATES
     {
         "country": "United States",
+        "state": "New York",
         "cities": ["New York", "New York City", "Brooklyn", "Queens", "Bronx"],
+        "neighborhoods": [],
         "name": "City Harvest",
         "type": "Metro Food Rescue & Distribution",
         "url": "https://www.cityharvest.org/",
@@ -54,7 +211,9 @@ ORGS = [
     },
     {
         "country": "United States",
+        "state": "Multi-State",
         "cities": ["New York", "Los Angeles", "Chicago", "Boston", "Seattle", "San Francisco", "Washington", "New Haven", "Detroit", "Miami"],
+        "neighborhoods": [],
         "name": "Food Rescue US",
         "type": "App-Based Hyper-Local Food Transfer",
         "url": "https://foodrescue.us/",
@@ -64,7 +223,9 @@ ORGS = [
     # CANADA
     {
         "country": "Canada",
+        "state": "Multi-Province",
         "cities": ["Toronto", "Vancouver", "Montreal", "Calgary", "Ottawa", "Edmonton", "Winnipeg"],
+        "neighborhoods": [],
         "name": "Second Harvest Canada",
         "type": "National Food Rescue Logistics",
         "url": "https://www.secondharvest.ca/",
@@ -74,7 +235,9 @@ ORGS = [
     # UNITED KINGDOM
     {
         "country": "United Kingdom",
+        "state": "UK",
         "cities": ["London", "Manchester", "Birmingham", "Liverpool", "Bristol", "Leeds", "Glasgow", "Edinburgh", "Cardiff"],
+        "neighborhoods": [],
         "name": "FareShare UK",
         "type": "Charity Food Redistribution Network",
         "url": "https://fareshare.org.uk/",
@@ -84,7 +247,9 @@ ORGS = [
     # AUSTRALIA
     {
         "country": "Australia",
+        "state": "Multi-State",
         "cities": ["Sydney", "Melbourne", "Brisbane", "Perth", "Adelaide", "Canberra", "Gold Coast", "Newcastle"],
+        "neighborhoods": [],
         "name": "OzHarvest",
         "type": "Perishable Food Rescue Fleet",
         "url": "https://www.ozharvest.org/",
@@ -94,7 +259,9 @@ ORGS = [
     # NEW ZEALAND
     {
         "country": "New Zealand",
+        "state": "Wellington Region",
         "cities": ["Wellington", "Lower Hutt", "Porirua", "Kapiti"],
+        "neighborhoods": [],
         "name": "Kaibosh Food Rescue",
         "type": "Regional Food Rescue",
         "url": "https://www.kaibosh.org.nz/",
@@ -104,7 +271,9 @@ ORGS = [
     # SINGAPORE
     {
         "country": "Singapore",
+        "state": "Singapore",
         "cities": ["Singapore"],
+        "neighborhoods": [],
         "name": "The Food Bank Singapore",
         "type": "Food Bank & Redistribution Depots",
         "url": "https://foodbank.sg/",
@@ -114,7 +283,9 @@ ORGS = [
     # SOUTH AFRICA
     {
         "country": "South Africa",
+        "state": "Multi-Province",
         "cities": ["Johannesburg", "Cape Town", "Durban", "Pretoria", "Gqeberha", "Port Elizabeth"],
+        "neighborhoods": [],
         "name": "FoodForward SA",
         "type": "Recovery & Redistribution Infrastructure",
         "url": "https://foodforwardsa.org/",
@@ -124,7 +295,9 @@ ORGS = [
     # KENYA
     {
         "country": "Kenya",
+        "state": "Multi-County",
         "cities": ["Nairobi", "Mombasa", "Kisumu"],
+        "neighborhoods": [],
         "name": "Food Banking Kenya",
         "type": "Regional Hub & Farm Recovery",
         "url": "https://foodbankingkenya.org/",
@@ -134,7 +307,9 @@ ORGS = [
     # NIGERIA
     {
         "country": "Nigeria",
+        "state": "Multi-State",
         "cities": ["Lagos", "Abuja", "Ibadan"],
+        "neighborhoods": [],
         "name": "Lagos Food Bank Initiative",
         "type": "Hunger Relief & Malnutrition Programs",
         "url": "https://lagosfoodbank.org/",
@@ -144,7 +319,9 @@ ORGS = [
     # INDONESIA
     {
         "country": "Indonesia",
+        "state": "Multi-Province",
         "cities": ["Bali", "Denpasar", "Jakarta"],
+        "neighborhoods": [],
         "name": "Scholars of Sustenance (SOS) Indonesia",
         "type": "Cooked Surplus Recovery & Relief",
         "url": "https://www.scholarsofsustenance.org/sos-indonesia",
@@ -152,7 +329,9 @@ ORGS = [
     },
     {
         "country": "Indonesia",
+        "state": "Java",
         "cities": ["Jakarta", "Bandung", "Surabaya"],
+        "neighborhoods": [],
         "name": "FoodCycle Indonesia",
         "type": "Surplus Redistribution & Food Waste Prevention",
         "url": "https://foodcycle.id/",
@@ -162,7 +341,9 @@ ORGS = [
     # MALAYSIA
     {
         "country": "Malaysia",
+        "state": "Klang Valley & Penang",
         "cities": ["Kuala Lumpur", "Petaling Jaya", "Shah Alam", "George Town"],
+        "neighborhoods": [],
         "name": "The Lost Food Project",
         "type": "Surplus Rescue & Distribution",
         "url": "https://www.thelostfoodproject.org/",
@@ -172,7 +353,9 @@ ORGS = [
     # BRAZIL
     {
         "country": "Brazil",
+        "state": "Multi-State",
         "cities": ["São Paulo", "Rio de Janeiro", "Brasília", "Salvador", "Belo Horizonte"],
+        "neighborhoods": [],
         "name": "Mesa Brasil SESC",
         "type": "National Network of Food Banks",
         "url": "https://www.sesc.com.br/atuacoes/assistencia/mesa-brasil/",
@@ -182,7 +365,9 @@ ORGS = [
     # MEXICO
     {
         "country": "Mexico",
+        "state": "Multi-State",
         "cities": ["Mexico City", "Guadalajara", "Monterrey", "Puebla", "Tijuana", "Querétaro"],
+        "neighborhoods": [],
         "name": "BAMX (Red de Bancos de Alimentos de México)",
         "type": "National Food Bank Federation",
         "url": "https://bamx.org.mx/",
@@ -192,7 +377,9 @@ ORGS = [
     # SPAIN
     {
         "country": "Spain",
+        "state": "Multi-Region",
         "cities": ["Madrid", "Barcelona", "Valencia", "Seville", "Bilbao", "Málaga"],
+        "neighborhoods": [],
         "name": "FESBAL (Federación Española de Bancos de Alimentos)",
         "type": "National Federation of Regional Food Banks",
         "url": "https://www.fesbal.org/",
@@ -202,7 +389,9 @@ ORGS = [
     # GERMANY
     {
         "country": "Germany",
+        "state": "Multi-State",
         "cities": ["Berlin", "Hamburg", "Munich", "Frankfurt", "Cologne", "Stuttgart"],
+        "neighborhoods": [],
         "name": "Tafel Deutschland e.V.",
         "type": "Food Distribution Stations & Volunteer Hubs",
         "url": "https://www.tafel.de/",
@@ -212,7 +401,9 @@ ORGS = [
     # FRANCE
     {
         "country": "France",
+        "state": "Multi-Region",
         "cities": ["Paris", "Lyon", "Marseille", "Toulouse", "Bordeaux", "Lille"],
+        "neighborhoods": [],
         "name": "Fédération Française des Banques Alimentaires",
         "type": "Surplus Recovery & Food Security Network",
         "url": "https://www.banquealimentaire.org/",
@@ -222,7 +413,9 @@ ORGS = [
     # IRELAND
     {
         "country": "Ireland",
+        "state": "Republic of Ireland",
         "cities": ["Dublin", "Cork", "Galway", "Limerick", "Waterford"],
+        "neighborhoods": [],
         "name": "FoodCloud",
         "type": "Digital Technology & Logistics Platform",
         "url": "https://food.cloud/",
@@ -231,17 +424,86 @@ ORGS = [
 ]
 
 CITY_ALIASES = {
+    # NCR & Delhi Neighborhoods
     "new delhi": "Delhi",
     "delhi": "Delhi",
     "ncr": "Delhi",
-    "bangalore": "Bengaluru",
-    "bengaluru": "Bengaluru",
+    "gurgaon": "Delhi",
+    "gurugram": "Delhi",
+    "noida": "Noida",
+    "ghaziabad": "Ghaziabad",
+    "faridabad": "Delhi",
+    "connaught place": "Delhi",
+    "cp": "Delhi",
+    "hauz khas": "Delhi",
+    "dwarka": "Delhi",
+    "rohini": "Delhi",
+    "saket": "Delhi",
+    "karol bagh": "Delhi",
+
+    # Mumbai & MMR Neighborhoods
     "bombay": "Mumbai",
     "mumbai": "Mumbai",
-    "calcutta": "Kolkata",
-    "kolkata": "Kolkata",
+    "bandra": "Mumbai",
+    "andheri": "Mumbai",
+    "juhu": "Mumbai",
+    "colaba": "Mumbai",
+    "dadar": "Mumbai",
+    "powai": "Mumbai",
+    "ghatkopar": "Mumbai",
+    "borivali": "Mumbai",
+    "vashi": "Navi Mumbai",
+    "nerul": "Navi Mumbai",
+    "navi mumbai": "Navi Mumbai",
+    "thane": "Thane",
+
+    # Bengaluru Neighborhoods
+    "bangalore": "Bengaluru",
+    "bengaluru": "Bengaluru",
+    "koramangala": "Bengaluru",
+    "indiranagar": "Bengaluru",
+    "whitefield": "Bengaluru",
+    "hsr": "Bengaluru",
+    "hsr layout": "Bengaluru",
+    "jayanagar": "Bengaluru",
+    "electronic city": "Bengaluru",
+    "malleshwaram": "Bengaluru",
+
+    # Chennai Neighborhoods
     "madras": "Chennai",
     "chennai": "Chennai",
+    "t nagar": "Chennai",
+    "adyar": "Chennai",
+    "velachery": "Chennai",
+    "anna nagar": "Chennai",
+
+    # Hyderabad Neighborhoods
+    "hyderabad": "Hyderabad",
+    "secunderabad": "Hyderabad",
+    "gachibowli": "Hyderabad",
+    "hitec city": "Hyderabad",
+    "madhapur": "Hyderabad",
+    "banjara hills": "Hyderabad",
+    "jubilee hills": "Hyderabad",
+
+    # Kolkata Neighborhoods
+    "calcutta": "Kolkata",
+    "kolkata": "Kolkata",
+    "salt lake": "Kolkata",
+    "new town": "Kolkata",
+    "park street": "Kolkata",
+    "ballygunge": "Kolkata",
+
+    # Kerala Neighborhoods
+    "cochin": "Kochi",
+    "kochi": "Kochi",
+    "ernakulam": "Kochi",
+    "kakkanad": "Kochi",
+    "trivandrum": "Thiruvananthapuram",
+    "thiruvananthapuram": "Thiruvananthapuram",
+    "calicut": "Kozhikode",
+
+    # International Aliases
     "nyc": "New York",
     "new york city": "New York",
     "sf": "San Francisco",
@@ -261,42 +523,40 @@ def canonical_city(text):
     value = clean(text)
     return CITY_ALIASES.get(value, str(text).strip().title())
 
-def detect_city(text):
+def detect_location(text):
     t = clean(text)
-    all_cities = set()
-    for org in ORGS:
-        all_cities.update(org["cities"])
-    all_cities.update(CITY_ALIASES.keys())
 
-    for city in sorted(all_cities, key=len, reverse=True):
-        if re.search(r"(?<!\w)" + re.escape(city.lower()) + r"(?!\w)", t):
-            return canonical_city(city)
+    for alias_k, canonical_v in sorted(CITY_ALIASES.items(), key=lambda x: len(x[0]), reverse=True):
+        if re.search(r"(?<!\w)" + re.escape(alias_k) + r"(?!\w)", t):
+            return canonical_v, alias_k.title()
+
+    for org in ORGS:
+        for hood in org.get("neighborhoods", []):
+            if re.search(r"(?<!\w)" + re.escape(hood.lower()) + r"(?!\w)", t):
+                return org["cities"][0], hood
+
+        for city in org["cities"]:
+            if re.search(r"(?<!\w)" + re.escape(city.lower()) + r"(?!\w)", t):
+                return canonical_city(city), None
 
     patterns = [
-        r"\bin\s+([a-zA-ZÀ-ÿ][a-zA-ZÀ-ÿ .'-]{1,40})",
-        r"\bfrom\s+([a-zA-ZÀ-ÿ][a-zA-ZÀ-ÿ .'-]{1,40})",
-        r"\baround\s+([a-zA-ZÀ-ÿ][a-zA-ZÀ-ÿ .'-]{1,40})",
-        r"\bnear\s+([a-zA-ZÀ-ÿ][a-zA-ZÀ-ÿ .'-]{1,40})",
-        r"\blive in\s+([a-zA-ZÀ-ÿ][a-zA-ZÀ-ÿ .'-]{1,40})",
-        r"\bi'm in\s+([a-zA-ZÀ-ÿ][a-zA-ZÀ-ÿ .'-]{1,40})",
-        r"\bi am in\s+([a-zA-ZÀ-ÿ][a-zA-ZÀ-ÿ .'-]{1,40})",
+        r"\bin\s+([a-zA-ZÀ-ÿ0-9 .'-]{1,35})",
+        r"\bfrom\s+([a-zA-ZÀ-ÿ0-9 .'-]{1,35})",
+        r"\baround\s+([a-zA-ZÀ-ÿ0-9 .'-]{1,35})",
+        r"\bnear\s+([a-zA-ZÀ-ÿ0-9 .'-]{1,35})",
+        r"\bat\s+([a-zA-ZÀ-ÿ0-9 .'-]{1,35})",
     ]
-
-    stop_words = {
-        "a", "an", "the", "and", "with", "where", "what", "how",
-        "can", "could", "should", "do", "does", "is", "are", "please"
-    }
-
+    stop_words = {"a", "an", "the", "and", "with", "where", "what", "how", "please"}
     for pattern in patterns:
         match = re.search(pattern, t)
         if match:
             candidate = match.group(1).strip(" .,!?:;")
             candidate = candidate.split(" and ")[0].strip()
-            candidate = candidate.split(" where ")[0].strip()
             if candidate and candidate.split()[0] not in stop_words:
-                return canonical_city(candidate)
+                resolved = canonical_city(candidate)
+                return resolved, None
 
-    return None
+    return None, None
 
 def detect_intent(text):
     t = clean(text)
@@ -322,15 +582,25 @@ def detect_intent(text):
         return "greeting"
     return "general"
 
-def find_orgs(city):
+def find_orgs(city, neighborhood=None):
     if not city:
         return []
     canonical = canonical_city(city)
-    results = []
+    matched_results = []
+
     for org in ORGS:
-        if any(clean(c) == clean(canonical) for c in org["cities"]):
-            results.append(org)
-    return results
+        city_match = any(clean(c) == clean(canonical) for c in org.get("cities", []))
+        hood_match = False
+        if neighborhood:
+            hood_match = any(clean(h) == clean(neighborhood) for h in org.get("neighborhoods", []))
+
+        if city_match or hood_match:
+            matched_results.append({
+                **org,
+                "is_hyperlocal": hood_match
+            })
+
+    return sorted(matched_results, key=lambda x: x.get("is_hyperlocal", False), reverse=True)
 
 def create_email_link(org, name, email, food, quantity, city, notes):
     subject = f"Surplus Food Donation Enquiry — {city}"
@@ -361,6 +631,7 @@ defaults = {
     "messages": [],
     "last_results": [],
     "last_city": None,
+    "last_neighborhood": None,
     "request_recorded": False,
     "selected_org": None,
 }
@@ -518,6 +789,19 @@ p, span, label, div {
     margin-bottom: 8px;
 }
 
+.pill-local {
+    display: inline-block;
+    background: #1F3B2C;
+    color: #7EE787;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 6px;
+    border: 1px solid #2EA043;
+    margin-right: 6px;
+    margin-bottom: 8px;
+}
+
 .callout-banner {
     background: #251B12;
     border: 1px solid #4D3319;
@@ -530,7 +814,6 @@ p, span, label, div {
     margin: 1.5rem 0;
 }
 
-/* Streamlit Native Overrides for Dark Mode */
 div[data-testid="stVerticalBlockBorderWrapper"] {
     background-color: var(--surface) !important;
     border-color: var(--border-light) !important;
@@ -633,7 +916,7 @@ with col2:
     <div class="step-card">
         <div class="step-index">STEP 02</div>
         <div class="step-heading">Find Local Nodes</div>
-        <p class="step-desc">Identify verified partners operating in your specific metropolitan area.</p>
+        <p class="step-desc">Identify verified partners operating in your specific metropolitan or neighborhood area.</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -658,49 +941,53 @@ for msg in st.session_state.messages:
     with st.chat_message(msg["role"]):
         st.markdown(msg["content"])
 
-user_input = st.chat_input("E.g., 'We have 40 catered trays left over in Toronto' or 'Food rescue in Delhi'")
+user_input = st.chat_input("E.g., 'We have 40 catered trays left in Indiranagar' or 'Food rescue in Kochi'")
 
 if user_input:
     st.session_state.messages.append({"role": "user", "content": user_input})
 
     intent = detect_intent(user_input)
-    city = detect_city(user_input)
+    city, neighborhood = detect_location(user_input)
 
-    if intent == "greeting":
-        reply = (
-            "Hello! I am ready to help coordinate your food donation. "
-            "Let me know **what city you are located in** and a brief description of what you have to donate."
-        )
-        orgs = []
-    elif intent == "surplus" and not city:
-        reply = (
-            "We can definitely find a destination for that surplus. "
-            "**Which city are you located in?**"
-        )
-        orgs = []
-    elif city:
-        orgs = find_orgs(city)
+    active_location = neighborhood if neighborhood else city
+
+    if city or neighborhood:
+        orgs = find_orgs(city, neighborhood)
+        loc_label = f"{neighborhood}, {city}" if (neighborhood and city and neighborhood.lower() != city.lower()) else (city or neighborhood)
         if orgs:
             reply = (
-                f"We identified **{len(orgs)} verified redistribution partner(s)** serving **{city}**.\n\n"
+                f"We identified **{len(orgs)} verified redistribution partner(s)** serving **{loc_label}**.\n\n"
                 "Browse the details below to review their operations or prepare a pre-filled donation enquiry."
             )
         else:
             reply = (
-                f"We currently do not have a pre-indexed partner active in **{city}** in this prototype database. "
+                f"We currently do not have a pre-indexed partner active in **{loc_label}** in this prototype database. "
                 "For unlisted areas, regional food banks or municipal relief services are often available through local council directories."
             )
+    elif intent == "greeting":
+        reply = (
+            "Hello! I am ready to help coordinate your food donation. "
+            "Let me know **what city or neighborhood you are located in** and a brief description of what you have to donate."
+        )
+        orgs = []
+    elif intent == "surplus":
+        reply = (
+            "We can definitely find a destination for that surplus. "
+            "**Which city or area are you located in?**"
+        )
+        orgs = []
     else:
         reply = (
             "I can assist with locating food rescue organizations.\n\n"
             "Try specifying your location:\n"
-            "- *“Who takes extra banquet meals in New York?”*\n"
-            "- *“We have 30 lunch boxes left over in Mumbai.”*\n"
-            "- *“Surplus baked goods in London.”*"
+            "- *“Who takes extra banquet meals in Indiranagar, Bengaluru?”*\n"
+            "- *“We have 30 lunch boxes left over in Bandra, Mumbai.”*\n"
+            "- *“Surplus food rescue near Connaught Place, Delhi.”*"
         )
         orgs = []
 
     st.session_state.last_city = city
+    st.session_state.last_neighborhood = neighborhood
     st.session_state.last_results = orgs
     st.session_state.messages.append({"role": "assistant", "content": reply})
     st.rerun()
@@ -709,8 +996,9 @@ if user_input:
 # MATCHED ORGANISATIONS SECTION
 # ------------------------------------------------------------
 if st.session_state.last_results:
+    loc_display = st.session_state.last_neighborhood or st.session_state.last_city
     st.markdown("<div style='height: 20px;'></div>", unsafe_allow_html=True)
-    st.markdown(f"<div class=\"section-tag\">Results for {st.session_state.last_city}</div>", unsafe_allow_html=True)
+    st.markdown(f"<div class=\"section-tag\">Results for {loc_display}</div>", unsafe_allow_html=True)
 
     for index, org in enumerate(st.session_state.last_results):
         with st.container(border=True):
@@ -718,13 +1006,22 @@ if st.session_state.last_results:
             
             with head_col:
                 st.markdown(f"#### {org['name']}")
-                st.markdown(
-                    f"<span class='pill-meta'>{org['country']}</span>"
-                    f"<span class='pill-meta'>{org['type']}</span>",
-                    unsafe_allow_html=True
-                )
-                coverage_str = ", ".join(org['cities'][:6]) + ("..." if len(org['cities']) > 6 else "")
-                st.caption(f"Key Hubs: {coverage_str}")
+                
+                tags_html = f"<span class='pill-meta'>{org['country']}</span>"
+                if org.get("state") and org["state"] != "Multi-State":
+                    tags_html += f"<span class='pill-meta'>{org['state']}</span>"
+                tags_html += f"<span class='pill-meta'>{org['type']}</span>"
+                if org.get("is_hyperlocal"):
+                    tags_html += "<span class='pill-local'>Direct Neighborhood Match</span>"
+
+                st.markdown(tags_html, unsafe_allow_html=True)
+
+                if org.get("neighborhoods"):
+                    hoods_display = ", ".join(org["neighborhoods"][:5])
+                    st.caption(f"📍 Notable Local Hubs: {hoods_display}")
+                else:
+                    coverage_str = ", ".join(org['cities'][:6]) + ("..." if len(org['cities']) > 6 else "")
+                    st.caption(f"Key Hubs: {coverage_str}")
 
             with action_col:
                 st.markdown("<div style='height: 6px;'></div>", unsafe_allow_html=True)
@@ -756,7 +1053,7 @@ if st.session_state.request_recorded and st.session_state.last_results:
     selected_idx = st.session_state.selected_org
     if selected_idx < len(st.session_state.last_results):
         org = st.session_state.last_results[selected_idx]
-        city = st.session_state.last_city
+        city = st.session_state.last_city or "your area"
 
         st.markdown("<div style='height: 20px;'></div>", unsafe_allow_html=True)
         st.markdown(f"<div class=\"section-tag\">Prepare Communication</div>", unsafe_allow_html=True)
