@@ -155,7 +155,7 @@ ORGS = [
         "cities": ["Jakarta", "Bandung", "Surabaya"],
         "name": "FoodCycle Indonesia",
         "type": "Surplus Redistribution & Food Waste Prevention",
-        "url": "https://www.foodcycle.id/",
+        "url": "https://foodcycle.id/",
         "contact_email": "info@foodcycle.id",
     },
 
@@ -369,27 +369,28 @@ for key, value in defaults.items():
         st.session_state[key] = value
 
 # ------------------------------------------------------------
-# MODERN EDITORIAL STYLING
+# DARK THEME EDITORIAL STYLING
 # ------------------------------------------------------------
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap');
 
 :root {
-    --bg: #F8F9FA;
-    --surface: #FFFFFF;
-    --text-primary: #192521;
-    --text-secondary: #566461;
-    --brand-green: #245A46;
-    --brand-green-hover: #194032;
-    --accent-sand: #F4F1EA;
-    --accent-terracotta: #C85A32;
-    --border-light: #E5E9E7;
+    --bg: #0D1117;
+    --surface: #161B22;
+    --surface-elevated: #21262D;
+    --text-primary: #FFFFFF;
+    --text-secondary: #9DA7B3;
+    --brand-green: #238636;
+    --brand-green-hover: #2EA043;
+    --accent-sand: #30363D;
+    --accent-orange: #F0883E;
+    --border-light: #30363D;
 }
 
 .stApp {
-    background-color: var(--bg);
-    color: var(--text-primary);
+    background-color: var(--bg) !important;
+    color: var(--text-primary) !important;
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
@@ -399,10 +400,14 @@ st.markdown("""
     padding-bottom: 5rem;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
     font-family: 'Playfair Display', Georgia, serif !important;
-    color: var(--text-primary) !important;
+    color: #FFFFFF !important;
     letter-spacing: -0.02em;
+}
+
+p, span, label, div {
+    color: var(--text-primary);
 }
 
 .brand-nav {
@@ -418,19 +423,20 @@ h1, h2, h3 {
     font-family: 'Playfair Display', Georgia, serif;
     font-size: 2rem;
     font-weight: 700;
-    color: var(--brand-green);
+    color: #56D364;
     letter-spacing: -0.03em;
 }
 
 .tag-badge {
-    background: #E8EFEA;
-    color: var(--brand-green);
+    background: #1F3B2C;
+    color: #7EE787;
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.08em;
     padding: 6px 14px;
     border-radius: 999px;
     text-transform: uppercase;
+    border: 1px solid #2EA043;
 }
 
 .hero-box {
@@ -438,7 +444,7 @@ h1, h2, h3 {
     border: 1px solid var(--border-light);
     border-radius: 20px;
     padding: 3rem 2.5rem;
-    box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
     margin-bottom: 2rem;
 }
 
@@ -447,7 +453,7 @@ h1, h2, h3 {
     font-size: clamp(2.2rem, 5vw, 3.4rem);
     line-height: 1.15;
     font-weight: 700;
-    color: var(--text-primary);
+    color: #FFFFFF;
     margin: 0.5rem 0 1.2rem;
 }
 
@@ -464,12 +470,12 @@ h1, h2, h3 {
     border: 1px solid var(--border-light);
     border-radius: 14px;
     padding: 1.5rem;
-    box-shadow: 0 2px 10px -2px rgba(0, 0, 0, 0.02);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
     height: 100%;
 }
 
 .step-index {
-    color: var(--accent-terracotta);
+    color: var(--accent-orange);
     font-weight: 700;
     font-size: 0.85rem;
     letter-spacing: 0.1em;
@@ -480,7 +486,7 @@ h1, h2, h3 {
     font-size: 1.25rem;
     font-weight: 600;
     margin: 0.4rem 0;
-    color: var(--text-primary);
+    color: #FFFFFF;
 }
 
 .step-desc {
@@ -495,39 +501,45 @@ h1, h2, h3 {
     text-transform: uppercase;
     font-weight: 700;
     letter-spacing: 0.12em;
-    color: var(--accent-terracotta);
+    color: var(--accent-orange);
     margin-bottom: 0.6rem;
 }
 
 .pill-meta {
     display: inline-block;
-    background: var(--accent-sand);
-    color: var(--text-secondary);
+    background: var(--surface-elevated);
+    color: #E6EDF3;
     font-size: 0.78rem;
     font-weight: 600;
-    padding: 3px 10px;
+    padding: 4px 12px;
     border-radius: 6px;
+    border: 1px solid var(--border-light);
     margin-right: 6px;
     margin-bottom: 8px;
 }
 
 .callout-banner {
-    background: #FFF9F2;
-    border: 1px solid #F5DEB3;
-    border-left: 4px solid var(--accent-terracotta);
+    background: #251B12;
+    border: 1px solid #4D3319;
+    border-left: 4px solid var(--accent-orange);
     border-radius: 8px;
     padding: 1rem 1.25rem;
     font-size: 0.9rem;
     line-height: 1.5;
-    color: #634533;
+    color: #FFD29D;
     margin: 1.5rem 0;
 }
 
-/* Button & Streamlit Elements */
+/* Streamlit Native Overrides for Dark Mode */
+div[data-testid="stVerticalBlockBorderWrapper"] {
+    background-color: var(--surface) !important;
+    border-color: var(--border-light) !important;
+}
+
 .stButton > button {
     background-color: var(--brand-green) !important;
     color: #FFFFFF !important;
-    border: none !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
     border-radius: 10px !important;
     font-weight: 600 !important;
     font-size: 0.92rem !important;
@@ -537,20 +549,38 @@ h1, h2, h3 {
 
 .stButton > button:hover {
     background-color: var(--brand-green-hover) !important;
-    box-shadow: 0 4px 12px rgba(36, 90, 70, 0.25) !important;
+    box-shadow: 0 4px 12px rgba(35, 134, 54, 0.4) !important;
 }
 
 .stLinkButton > a {
     border-radius: 10px !important;
     font-weight: 600 !important;
     font-size: 0.92rem !important;
+    background-color: var(--surface-elevated) !important;
+    color: #FFFFFF !important;
+    border: 1px solid var(--border-light) !important;
+}
+
+.stLinkButton > a:hover {
+    background-color: #2D333B !important;
+    border-color: #8B949E !important;
 }
 
 [data-testid="stChatMessage"] {
-    background: var(--surface);
-    border: 1px solid var(--border-light);
-    border-radius: 12px;
-    margin-bottom: 0.75rem;
+    background: var(--surface) !important;
+    border: 1px solid var(--border-light) !important;
+    border-radius: 12px !important;
+    margin-bottom: 0.75rem !important;
+}
+
+div[data-baseweb="input"], div[data-baseweb="textarea"] {
+    background-color: var(--surface-elevated) !important;
+    border-color: var(--border-light) !important;
+}
+
+input, textarea {
+    color: #FFFFFF !important;
+    background-color: transparent !important;
 }
 
 .footer-copy {
@@ -624,7 +654,6 @@ st.markdown("<div style='height: 30px;'></div>", unsafe_allow_html=True)
 st.markdown("<div class=\"section-tag\">Directory Assistant</div>", unsafe_allow_html=True)
 st.markdown("### How can we help you redistribute today?")
 
-# Render history
 for msg in st.session_state.messages:
     with st.chat_message(msg["role"]):
         st.markdown(msg["content"])
@@ -695,7 +724,7 @@ if st.session_state.last_results:
                     unsafe_allow_html=True
                 )
                 coverage_str = ", ".join(org['cities'][:6]) + ("..." if len(org['cities']) > 6 else "")
-                st.caption(f"**Key Hubs:** {coverage_str}")
+                st.caption(f"Key Hubs: {coverage_str}")
 
             with action_col:
                 st.markdown("<div style='height: 6px;'></div>", unsafe_allow_html=True)
