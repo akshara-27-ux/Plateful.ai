@@ -23,6 +23,7 @@ ORGS = [
     {
         "country": "India",
         "state": "Multi-State",
+        "supported_states": ["Delhi", "Tamil Nadu", "Karnataka", "Telangana", "Andhra Pradesh"],
         "cities": ["Delhi", "New Delhi", "Chennai", "Bengaluru", "Coimbatore", "Hyderabad", "Tadepalligudem"],
         "neighborhoods": ["Connaught Place", "Dwarka", "Indiranagar", "Koramangala", "T Nagar", "Adyar", "Banjara Hills", "Hitec City", "RS Puram", "Gandhipuram"],
         "name": "No Food Waste",
@@ -33,6 +34,7 @@ ORGS = [
     {
         "country": "India",
         "state": "Multi-State",
+        "supported_states": ["Delhi", "Maharashtra", "Karnataka", "Telangana", "Tamil Nadu", "West Bengal", "Gujarat", "Rajasthan", "Punjab", "Haryana", "Uttar Pradesh", "Madhya Pradesh", "Kerala", "Andhra Pradesh", "Bihar"],
         "cities": ["Delhi", "New Delhi", "Mumbai", "Bengaluru", "Hyderabad", "Chennai", "Kolkata", "Pune", "Ahmedabad", "Jaipur", "Chandigarh", "Lucknow", "Indore", "Kochi", "Bhopal", "Visakhapatnam", "Nagpur", "Patna", "Ludhiana", "Agra", "Nashik", "Vadodara", "Varanasi"],
         "neighborhoods": ["Bandra", "Andheri", "Juhu", "Hauz Khas", "Saket", "Whitefield", "Jayanagar", "Salt Lake", "Park Street", "Gomti Nagar", "Hazratganj", "C-Scheme", "Malviya Nagar"],
         "name": "Feeding India (by Zomato)",
@@ -43,6 +45,7 @@ ORGS = [
     {
         "country": "India",
         "state": "Multi-State",
+        "supported_states": ["Delhi", "Maharashtra", "Karnataka", "Telangana", "Tamil Nadu", "West Bengal", "Gujarat", "Rajasthan", "Assam", "Odisha", "Uttarakhand", "Punjab", "Jharkhand", "Goa"],
         "cities": ["Delhi", "New Delhi", "Mumbai", "Bengaluru", "Hyderabad", "Chennai", "Kolkata", "Pune", "Ahmedabad", "Jaipur", "Guwahati", "Bhubaneswar", "Dehradun", "Amritsar", "Ranchi", "Surat", "Goa"],
         "neighborhoods": ["Colaba", "Dadar", "Powai", "Rohini", "Karol Bagh", "HSR Layout", "Indiranagar", "Kothrud", "Viman Nagar", "Panaji", "Margao", "Paltan Bazaar"],
         "name": "Robin Hood Army",
@@ -57,6 +60,7 @@ ORGS = [
     {
         "country": "India",
         "state": "Kerala",
+        "supported_states": ["Kerala"],
         "cities": ["Kochi", "Ernakulam", "Thiruvananthapuram", "Kozhikode", "Thrissur"],
         "neighborhoods": ["Kakkanad", "Edappally", "Fort Kochi", "MG Road", "Pattom", "Kazhakoottam", "Technopark", "Mananchira"],
         "name": "Anbodu Kochi & Nanma Maram Community Fridges",
@@ -67,6 +71,7 @@ ORGS = [
     {
         "country": "India",
         "state": "Tamil Nadu",
+        "supported_states": ["Tamil Nadu"],
         "cities": ["Madurai", "Tiruchirappalli", "Salem", "Tirunelveli"],
         "neighborhoods": ["KK Nagar", "Anna Nagar", "Thillai Nagar", "Cantonment", "Fairlands"],
         "name": "Aram Porul Foundation",
@@ -77,6 +82,7 @@ ORGS = [
     {
         "country": "India",
         "state": "Karnataka",
+        "supported_states": ["Karnataka"],
         "cities": ["Bengaluru", "Mysuru", "Mangaluru"],
         "neighborhoods": ["Malleshwaram", "Basavanagudi", "Electronic City", "Hebbal", "Gokulam", "Jayalakshmipuram", "Hampankatta", "Kadri"],
         "name": "Hasiru Dala Community Feeds",
@@ -87,6 +93,7 @@ ORGS = [
     {
         "country": "India",
         "state": "Maharashtra",
+        "supported_states": ["Maharashtra"],
         "cities": ["Mumbai", "Thane", "Navi Mumbai"],
         "neighborhoods": ["Dharavi", "Ghatkopar", "Borivali", "Chembur", "Vashi", "Nerul", "Thane West", "Ghansoli"],
         "name": "Roti Bank by Dabbawalas",
@@ -97,6 +104,7 @@ ORGS = [
     {
         "country": "India",
         "state": "Telangana",
+        "supported_states": ["Telangana", "Andhra Pradesh"],
         "cities": ["Hyderabad", "Secunderabad", "Warangal"],
         "neighborhoods": ["Madhapur", "Gachibowli", "Kukatpally", "Begumpet", "Jubilee Hills", "Charminar", "Hanamkonda"],
         "name": "Apple Homes (Feed The Needy)",
@@ -107,6 +115,7 @@ ORGS = [
     {
         "country": "India",
         "state": "West Bengal",
+        "supported_states": ["West Bengal"],
         "cities": ["Kolkata", "Howrah"],
         "neighborhoods": ["Ballygunge", "Gariahat", "New Town", "Shyambazar", "Howrah Station", "Dum Dum"],
         "name": "Sanjhbati Food Bank & Relief",
@@ -117,6 +126,7 @@ ORGS = [
     {
         "country": "India",
         "state": "Odisha",
+        "supported_states": ["Odisha"],
         "cities": ["Bhubaneswar", "Cuttack", "Puri"],
         "neighborhoods": ["Saheed Nagar", "Patia", "Khandagiri", "Badambadi", "CDA Sector", "Grand Road"],
         "name": "Aahwahan Foundation (Odisha Chapter)",
@@ -127,6 +137,7 @@ ORGS = [
     {
         "country": "India",
         "state": "Assam",
+        "supported_states": ["Assam", "Meghalaya"],
         "cities": ["Guwahati", "Dispur", "Silchar", "Dibrugarh"],
         "neighborhoods": ["Paltan Bazaar", "GS Road", "Pan Bazaar", "Ganeshguri", "Beltola", "Zoo Road"],
         "name": "Ubanta Foundation",
@@ -137,6 +148,7 @@ ORGS = [
     {
         "country": "India",
         "state": "Punjab",
+        "supported_states": ["Punjab", "Haryana", "Chandigarh"],
         "cities": ["Chandigarh", "Mohali", "Panchkula", "Ludhiana", "Amritsar", "Jalandhar"],
         "neighborhoods": ["Sector 17", "Sector 35", "Phase 7 Mohali", "Model Town", "Ranjit Avenue", "Civil Lines"],
         "name": "Voice of Amritsar (Sanjhi Rasoi)",
@@ -147,6 +159,7 @@ ORGS = [
     {
         "country": "India",
         "state": "Rajasthan",
+        "supported_states": ["Rajasthan"],
         "cities": ["Jaipur", "Jodhpur", "Udaipur", "Kota"],
         "neighborhoods": ["Vaishali Nagar", "Mansarovar", "Raja Park", "Sardarpura", "Fateh Sagar", "Talwandi"],
         "name": "Annakshetra Foundation Trust",
@@ -157,6 +170,7 @@ ORGS = [
     {
         "country": "India",
         "state": "Gujarat",
+        "supported_states": ["Gujarat"],
         "cities": ["Ahmedabad", "Surat", "Vadodara", "Rajkot"],
         "neighborhoods": ["Navrangpura", "Satellite", "Bodakdev", "SG Highway", "Athwa", "Vesu", "Alkapuri"],
         "name": "Annamrita Foundation Gujarat",
@@ -167,6 +181,7 @@ ORGS = [
     {
         "country": "India",
         "state": "Uttar Pradesh",
+        "supported_states": ["Uttar Pradesh", "Bihar"],
         "cities": ["Lucknow", "Noida", "Greater Noida", "Ghaziabad", "Kanpur", "Varanasi", "Patna"],
         "neighborhoods": ["Sector 18 Noida", "Sector 62", "Indirapuram", "Raj Nagar", "Swaroop Nagar", "Lanka", "Kankarbagh", "Boring Road"],
         "name": "Roti Bank Hope",
@@ -177,6 +192,7 @@ ORGS = [
     {
         "country": "India",
         "state": "Madhya Pradesh",
+        "supported_states": ["Madhya Pradesh"],
         "cities": ["Indore", "Bhopal", "Gwalior", "Jabalpur"],
         "neighborhoods": ["Vijay Nagar", "Palasia", "Chhappan Dukan", "MP Nagar", "Arera Colony"],
         "name": "Aahra Food Bank MP",
@@ -187,6 +203,7 @@ ORGS = [
     {
         "country": "India",
         "state": "Jammu & Kashmir",
+        "supported_states": ["Jammu & Kashmir", "Ladakh"],
         "cities": ["Srinagar", "Jammu"],
         "neighborhoods": ["Lal Chowk", "Rajbagh", "Hyderpora", "Gandhi Nagar", "Trikufta Nagar"],
         "name": "Athrout Kashmir Food Relief",
@@ -198,10 +215,10 @@ ORGS = [
     # ------------------------------------------------------------
     # INTERNATIONAL DIRECTORY
     # ------------------------------------------------------------
-    # UNITED STATES
     {
         "country": "United States",
         "state": "New York",
+        "supported_states": ["New York"],
         "cities": ["New York", "New York City", "Brooklyn", "Queens", "Bronx"],
         "neighborhoods": [],
         "name": "City Harvest",
@@ -212,6 +229,7 @@ ORGS = [
     {
         "country": "United States",
         "state": "Multi-State",
+        "supported_states": ["California", "Illinois", "Massachusetts", "Washington", "Connecticut", "Michigan", "Florida"],
         "cities": ["New York", "Los Angeles", "Chicago", "Boston", "Seattle", "San Francisco", "Washington", "New Haven", "Detroit", "Miami"],
         "neighborhoods": [],
         "name": "Food Rescue US",
@@ -219,11 +237,10 @@ ORGS = [
         "url": "https://foodrescue.us/",
         "contact_email": "info@foodrescue.us",
     },
-
-    # CANADA
     {
         "country": "Canada",
         "state": "Multi-Province",
+        "supported_states": ["Ontario", "British Columbia", "Quebec", "Alberta", "Manitoba"],
         "cities": ["Toronto", "Vancouver", "Montreal", "Calgary", "Ottawa", "Edmonton", "Winnipeg"],
         "neighborhoods": [],
         "name": "Second Harvest Canada",
@@ -231,11 +248,10 @@ ORGS = [
         "url": "https://www.secondharvest.ca/",
         "contact_email": "support@secondharvest.ca",
     },
-
-    # UNITED KINGDOM
     {
         "country": "United Kingdom",
         "state": "UK",
+        "supported_states": ["England", "Scotland", "Wales"],
         "cities": ["London", "Manchester", "Birmingham", "Liverpool", "Bristol", "Leeds", "Glasgow", "Edinburgh", "Cardiff"],
         "neighborhoods": [],
         "name": "FareShare UK",
@@ -243,11 +259,10 @@ ORGS = [
         "url": "https://fareshare.org.uk/",
         "contact_email": "enquiries@fareshare.org.uk",
     },
-
-    # AUSTRALIA
     {
         "country": "Australia",
         "state": "Multi-State",
+        "supported_states": ["New South Wales", "Victoria", "Queensland", "Western Australia", "South Australia", "ACT"],
         "cities": ["Sydney", "Melbourne", "Brisbane", "Perth", "Adelaide", "Canberra", "Gold Coast", "Newcastle"],
         "neighborhoods": [],
         "name": "OzHarvest",
@@ -255,11 +270,10 @@ ORGS = [
         "url": "https://www.ozharvest.org/",
         "contact_email": "info@ozharvest.org",
     },
-
-    # NEW ZEALAND
     {
         "country": "New Zealand",
         "state": "Wellington Region",
+        "supported_states": ["Wellington"],
         "cities": ["Wellington", "Lower Hutt", "Porirua", "Kapiti"],
         "neighborhoods": [],
         "name": "Kaibosh Food Rescue",
@@ -267,11 +281,10 @@ ORGS = [
         "url": "https://www.kaibosh.org.nz/",
         "contact_email": "info@kaibosh.org.nz",
     },
-
-    # SINGAPORE
     {
         "country": "Singapore",
         "state": "Singapore",
+        "supported_states": ["Singapore"],
         "cities": ["Singapore"],
         "neighborhoods": [],
         "name": "The Food Bank Singapore",
@@ -279,11 +292,10 @@ ORGS = [
         "url": "https://foodbank.sg/",
         "contact_email": "enquiries@foodbank.sg",
     },
-
-    # SOUTH AFRICA
     {
         "country": "South Africa",
         "state": "Multi-Province",
+        "supported_states": ["Gauteng", "Western Cape", "KwaZulu-Natal", "Eastern Cape"],
         "cities": ["Johannesburg", "Cape Town", "Durban", "Pretoria", "Gqeberha", "Port Elizabeth"],
         "neighborhoods": [],
         "name": "FoodForward SA",
@@ -291,11 +303,10 @@ ORGS = [
         "url": "https://foodforwardsa.org/",
         "contact_email": "info@foodforwardsa.org",
     },
-
-    # KENYA
     {
         "country": "Kenya",
         "state": "Multi-County",
+        "supported_states": ["Nairobi County", "Mombasa County", "Kisumu County"],
         "cities": ["Nairobi", "Mombasa", "Kisumu"],
         "neighborhoods": [],
         "name": "Food Banking Kenya",
@@ -303,11 +314,10 @@ ORGS = [
         "url": "https://foodbankingkenya.org/",
         "contact_email": "info@foodbankingkenya.org",
     },
-
-    # NIGERIA
     {
         "country": "Nigeria",
         "state": "Multi-State",
+        "supported_states": ["Lagos", "FCT", "Oyo"],
         "cities": ["Lagos", "Abuja", "Ibadan"],
         "neighborhoods": [],
         "name": "Lagos Food Bank Initiative",
@@ -315,11 +325,10 @@ ORGS = [
         "url": "https://lagosfoodbank.org/",
         "contact_email": "contactus@lagosfoodbank.org",
     },
-
-    # INDONESIA
     {
         "country": "Indonesia",
         "state": "Multi-Province",
+        "supported_states": ["Bali", "DKI Jakarta"],
         "cities": ["Bali", "Denpasar", "Jakarta"],
         "neighborhoods": [],
         "name": "Scholars of Sustenance (SOS) Indonesia",
@@ -330,6 +339,7 @@ ORGS = [
     {
         "country": "Indonesia",
         "state": "Java",
+        "supported_states": ["West Java", "East Java", "DKI Jakarta"],
         "cities": ["Jakarta", "Bandung", "Surabaya"],
         "neighborhoods": [],
         "name": "FoodCycle Indonesia",
@@ -337,11 +347,10 @@ ORGS = [
         "url": "https://foodcycle.id/",
         "contact_email": "info@foodcycle.id",
     },
-
-    # MALAYSIA
     {
         "country": "Malaysia",
         "state": "Klang Valley & Penang",
+        "supported_states": ["Selangor", "Penang", "Kuala Lumpur"],
         "cities": ["Kuala Lumpur", "Petaling Jaya", "Shah Alam", "George Town"],
         "neighborhoods": [],
         "name": "The Lost Food Project",
@@ -349,11 +358,10 @@ ORGS = [
         "url": "https://www.thelostfoodproject.org/",
         "contact_email": "info@thelostfoodproject.org",
     },
-
-    # BRAZIL
     {
         "country": "Brazil",
         "state": "Multi-State",
+        "supported_states": ["São Paulo", "Rio de Janeiro", "Distrito Federal", "Bahia", "Minas Gerais"],
         "cities": ["São Paulo", "Rio de Janeiro", "Brasília", "Salvador", "Belo Horizonte"],
         "neighborhoods": [],
         "name": "Mesa Brasil SESC",
@@ -361,11 +369,10 @@ ORGS = [
         "url": "https://www.sesc.com.br/atuacoes/assistencia/mesa-brasil/",
         "contact_email": "mesabrasil@sesc.com.br",
     },
-
-    # MEXICO
     {
         "country": "Mexico",
         "state": "Multi-State",
+        "supported_states": ["CDMX", "Jalisco", "Nuevo León", "Puebla", "Baja California", "Querétaro"],
         "cities": ["Mexico City", "Guadalajara", "Monterrey", "Puebla", "Tijuana", "Querétaro"],
         "neighborhoods": [],
         "name": "BAMX (Red de Bancos de Alimentos de México)",
@@ -373,11 +380,10 @@ ORGS = [
         "url": "https://bamx.org.mx/",
         "contact_email": "contacto@bamx.org.mx",
     },
-
-    # SPAIN
     {
         "country": "Spain",
         "state": "Multi-Region",
+        "supported_states": ["Madrid", "Catalonia", "Andalusia", "Basque Country", "Valencia"],
         "cities": ["Madrid", "Barcelona", "Valencia", "Seville", "Bilbao", "Málaga"],
         "neighborhoods": [],
         "name": "FESBAL (Federación Española de Bancos de Alimentos)",
@@ -385,11 +391,10 @@ ORGS = [
         "url": "https://www.fesbal.org/",
         "contact_email": "comunicacion@fesbal.org",
     },
-
-    # GERMANY
     {
         "country": "Germany",
         "state": "Multi-State",
+        "supported_states": ["Berlin", "Hamburg", "Bavaria", "Hesse", "North Rhine-Westphalia", "Baden-Württemberg"],
         "cities": ["Berlin", "Hamburg", "Munich", "Frankfurt", "Cologne", "Stuttgart"],
         "neighborhoods": [],
         "name": "Tafel Deutschland e.V.",
@@ -397,11 +402,10 @@ ORGS = [
         "url": "https://www.tafel.de/",
         "contact_email": "info@tafel.de",
     },
-
-    # FRANCE
     {
         "country": "France",
         "state": "Multi-Region",
+        "supported_states": ["Île-de-France", "Auvergne-Rhône-Alpes", "Provence-Alpes-Côte d'Azur", "Occitanie", "Nouvelle-Aquitaine", "Hauts-de-France"],
         "cities": ["Paris", "Lyon", "Marseille", "Toulouse", "Bordeaux", "Lille"],
         "neighborhoods": [],
         "name": "Fédération Française des Banques Alimentaires",
@@ -409,11 +413,10 @@ ORGS = [
         "url": "https://www.banquealimentaire.org/",
         "contact_email": "ffba@banquealimentaire.org",
     },
-
-    # IRELAND
     {
         "country": "Ireland",
         "state": "Republic of Ireland",
+        "supported_states": ["Leinster", "Munster", "Connacht"],
         "cities": ["Dublin", "Cork", "Galway", "Limerick", "Waterford"],
         "neighborhoods": [],
         "name": "FoodCloud",
@@ -422,6 +425,69 @@ ORGS = [
         "contact_email": "info@food.cloud",
     },
 ]
+
+# ------------------------------------------------------------
+# INDIAN STATES & UNION TERRITORIES ALIASES
+# ------------------------------------------------------------
+STATE_ALIASES = {
+    "andhra pradesh": "Andhra Pradesh",
+    "andhra": "Andhra Pradesh",
+    "ap": "Andhra Pradesh",
+    "arunachal pradesh": "Arunachal Pradesh",
+    "arunachal": "Arunachal Pradesh",
+    "assam": "Assam",
+    "asom": "Assam",
+    "bihar": "Bihar",
+    "chhattisgarh": "Chhattisgarh",
+    "goa": "Goa",
+    "gujarat": "Gujarat",
+    "haryana": "Haryana",
+    "himachal pradesh": "Himachal Pradesh",
+    "himachal": "Himachal Pradesh",
+    "hp": "Himachal Pradesh",
+    "jharkhand": "Jharkhand",
+    "karnataka": "Karnataka",
+    "kar": "Karnataka",
+    "kerala": "Kerala",
+    "madhya pradesh": "Madhya Pradesh",
+    "mp": "Madhya Pradesh",
+    "maharashtra": "Maharashtra",
+    "maha": "Maharashtra",
+    "mh": "Maharashtra",
+    "manipur": "Manipur",
+    "meghalaya": "Meghalaya",
+    "mizoram": "Mizoram",
+    "nagaland": "Nagaland",
+    "odisha": "Odisha",
+    "orissa": "Odisha",
+    "punjab": "Punjab",
+    "rajasthan": "Rajasthan",
+    "raj": "Rajasthan",
+    "sikkim": "Sikkim",
+    "tamil nadu": "Tamil Nadu",
+    "tamilnadu": "Tamil Nadu",
+    "tn": "Tamil Nadu",
+    "telangana": "Telangana",
+    "tg": "Telangana",
+    "ts": "Telangana",
+    "tripura": "Tripura",
+    "uttar pradesh": "Uttar Pradesh",
+    "up": "Uttar Pradesh",
+    "uttarakhand": "Uttarakhand",
+    "uttaranchal": "Uttarakhand",
+    "west bengal": "West Bengal",
+    "bengal": "West Bengal",
+    "wb": "West Bengal",
+    "jammu and kashmir": "Jammu & Kashmir",
+    "jammu & kashmir": "Jammu & Kashmir",
+    "j&k": "Jammu & Kashmir",
+    "ladakh": "Ladakh",
+    "delhi ncr": "Delhi",
+    "delhi": "Delhi",
+    "chandigarh": "Chandigarh",
+    "puducherry": "Puducherry",
+    "pondicherry": "Puducherry",
+}
 
 CITY_ALIASES = {
     # NCR & Delhi Neighborhoods
@@ -524,21 +590,39 @@ def canonical_city(text):
     return CITY_ALIASES.get(value, str(text).strip().title())
 
 def detect_location(text):
+    """
+    Scans input for:
+    1. Indian States & State Abbreviations
+    2. City & Neighborhood aliases
+    3. Explicit cities/neighborhoods inside ORGS
+    4. Fallback preposition patterns (in, around, near, from)
+    Returns: (canonical_city, detected_neighborhood, detected_state)
+    """
     t = clean(text)
 
+    # 1. State Detection
+    detected_state = None
+    for alias_s, canonical_s in sorted(STATE_ALIASES.items(), key=lambda x: len(x[0]), reverse=True):
+        if re.search(r"(?<!\w)" + re.escape(alias_s) + r"(?!\w)", t):
+            detected_state = canonical_s
+            break
+
+    # 2. Neighborhood & City Alias Check
     for alias_k, canonical_v in sorted(CITY_ALIASES.items(), key=lambda x: len(x[0]), reverse=True):
         if re.search(r"(?<!\w)" + re.escape(alias_k) + r"(?!\w)", t):
-            return canonical_v, alias_k.title()
+            return canonical_v, alias_k.title(), detected_state
 
+    # 3. Explicit Neighborhoods and Cities in ORGS
     for org in ORGS:
         for hood in org.get("neighborhoods", []):
             if re.search(r"(?<!\w)" + re.escape(hood.lower()) + r"(?!\w)", t):
-                return org["cities"][0], hood
+                return org["cities"][0], hood, detected_state or org.get("state")
 
-        for city in org["cities"]:
+        for city in org.get("cities", []):
             if re.search(r"(?<!\w)" + re.escape(city.lower()) + r"(?!\w)", t):
-                return canonical_city(city), None
+                return canonical_city(city), None, detected_state or org.get("state")
 
+    # 4. Fallback Preposition Search
     patterns = [
         r"\bin\s+([a-zA-ZÀ-ÿ0-9 .'-]{1,35})",
         r"\bfrom\s+([a-zA-ZÀ-ÿ0-9 .'-]{1,35})",
@@ -546,17 +630,21 @@ def detect_location(text):
         r"\bnear\s+([a-zA-ZÀ-ÿ0-9 .'-]{1,35})",
         r"\bat\s+([a-zA-ZÀ-ÿ0-9 .'-]{1,35})",
     ]
-    stop_words = {"a", "an", "the", "and", "with", "where", "what", "how", "please"}
+    stop_words = {"a", "an", "the", "and", "with", "where", "what", "how", "please", "state", "india"}
     for pattern in patterns:
         match = re.search(pattern, t)
         if match:
             candidate = match.group(1).strip(" .,!?:;")
             candidate = candidate.split(" and ")[0].strip()
+            candidate = candidate.split(" where ")[0].strip()
+            cand_clean = clean(candidate)
+            if cand_clean in STATE_ALIASES:
+                return None, None, STATE_ALIASES[cand_clean]
             if candidate and candidate.split()[0] not in stop_words:
                 resolved = canonical_city(candidate)
-                return resolved, None
+                return resolved, None, detected_state
 
-    return None, None
+    return None, None, detected_state
 
 def detect_intent(text):
     t = clean(text)
@@ -564,7 +652,7 @@ def detect_intent(text):
         "where", "find", "near", "ngo", "charity", "food bank", "foodbank",
         "organization", "organisation", "centre", "center", "donate",
         "donation", "give", "collect", "pickup", "pick up", "redistribute",
-        "redistribution", "food rescue", "who can take"
+        "redistribution", "food rescue", "who can take", "state"
     ]
     surplus_words = [
         "leftover", "left overs", "surplus", "extra food", "excess food",
@@ -582,38 +670,55 @@ def detect_intent(text):
         return "greeting"
     return "general"
 
-def find_orgs(city, neighborhood=None):
-    if not city:
+def find_orgs(city=None, neighborhood=None, state=None):
+    if not city and not neighborhood and not state:
         return []
-    canonical = canonical_city(city)
+
+    canonical = canonical_city(city) if city else None
     matched_results = []
 
     for org in ORGS:
-        city_match = any(clean(c) == clean(canonical) for c in org.get("cities", []))
+        city_match = False
         hood_match = False
+        state_match = False
+
+        if canonical:
+            city_match = any(clean(c) == clean(canonical) for c in org.get("cities", []))
         if neighborhood:
             hood_match = any(clean(h) == clean(neighborhood) for h in org.get("neighborhoods", []))
+        if state:
+            state_match = (
+                clean(org.get("state", "")) == clean(state) or
+                any(clean(s) == clean(state) for s in org.get("supported_states", []))
+            )
 
-        if city_match or hood_match:
+        if hood_match or city_match or state_match:
             matched_results.append({
                 **org,
-                "is_hyperlocal": hood_match
+                "is_hyperlocal": hood_match,
+                "is_city_match": city_match,
+                "is_state_match": state_match,
             })
 
-    return sorted(matched_results, key=lambda x: x.get("is_hyperlocal", False), reverse=True)
+    # Prioritize: Direct Neighborhood > Direct City > State-wide coverage
+    return sorted(
+        matched_results,
+        key=lambda x: (x.get("is_hyperlocal", False), x.get("is_city_match", False), x.get("is_state_match", False)),
+        reverse=True
+    )
 
-def create_email_link(org, name, email, food, quantity, city, notes):
-    subject = f"Surplus Food Donation Enquiry — {city}"
+def create_email_link(org, name, email, food, quantity, location_str, notes):
+    subject = f"Surplus Food Donation Enquiry — {location_str}"
     body = f"""Hello {org['name']} Team,
 
-I have surplus food available for redistribution in {city} and would like to coordinate a drop-off or collection if suitable.
+I have surplus food available for redistribution in {location_str} and would like to coordinate a drop-off or collection if suitable.
 
 Donor Details:
 • Contact Person: {name}
 • Email: {email}
 • Food Description: {food}
 • Quantity / Servings: {quantity}
-• Pickup Location: {city}
+• Pickup Location: {location_str}
 • Timings & Condition: {notes}
 
 Please let me know if your team can accept this batch or if you can redirect me to an active partner facility.
@@ -632,6 +737,8 @@ defaults = {
     "last_results": [],
     "last_city": None,
     "last_neighborhood": None,
+    "last_state": None,
+    "display_location": None,
     "request_recorded": False,
     "selected_org": None,
 }
@@ -802,6 +909,19 @@ p, span, label, div {
     margin-bottom: 8px;
 }
 
+.pill-state {
+    display: inline-block;
+    background: #2E1F3B;
+    color: #D2A8FF;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 6px;
+    border: 1px solid #8957E5;
+    margin-right: 6px;
+    margin-bottom: 8px;
+}
+
 .callout-banner {
     background: #251B12;
     border: 1px solid #4D3319;
@@ -893,7 +1013,7 @@ st.markdown("""
     <div class="hero-headline">Good food deserves a second destination.</div>
     <p class="hero-sub">
         Every day, commercial kitchens, catered events, and households have fresh meals left over.
-        Plateful helps you route excess edible food to established community kitchens and redistribution non-profits.
+        Plateful helps you route excess edible food to established community kitchens and redistribution non-profits across India and beyond.
     </p>
 </div>
 """, unsafe_allow_html=True)
@@ -907,7 +1027,7 @@ with col1:
     <div class="step-card">
         <div class="step-index">STEP 01</div>
         <div class="step-heading">Provide Context</div>
-        <p class="step-desc">Share where you are located, the kind of food you have, and approximate portion counts.</p>
+        <p class="step-desc">Share where you are located by state, city, or street, plus portion counts.</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -916,7 +1036,7 @@ with col2:
     <div class="step-card">
         <div class="step-index">STEP 02</div>
         <div class="step-heading">Find Local Nodes</div>
-        <p class="step-desc">Identify verified partners operating in your specific metropolitan or neighborhood area.</p>
+        <p class="step-desc">Identify verified partners operating at regional, state, or neighborhood levels.</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -925,7 +1045,7 @@ with col3:
     <div class="step-card">
         <div class="step-index">STEP 03</div>
         <div class="step-heading">Hand-off Details</div>
-        <p class="step-desc">Generate pre-formatted logistics emails to confirm collection, packaging, and safety standards.</p>
+        <p class="step-desc">Generate standardized notification emails to confirm logistics, timings, and hygiene standards.</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -941,53 +1061,63 @@ for msg in st.session_state.messages:
     with st.chat_message(msg["role"]):
         st.markdown(msg["content"])
 
-user_input = st.chat_input("E.g., 'We have 40 catered trays left in Indiranagar' or 'Food rescue in Kochi'")
+user_input = st.chat_input("E.g., 'Food rescue in Kerala', 'Extra food in Indiranagar, Bangalore', or 'Donations in UP'")
 
 if user_input:
     st.session_state.messages.append({"role": "user", "content": user_input})
 
     intent = detect_intent(user_input)
-    city, neighborhood = detect_location(user_input)
+    city, neighborhood, state = detect_location(user_input)
 
-    active_location = neighborhood if neighborhood else city
+    # Compile a clear location label for search results
+    location_parts = []
+    if neighborhood:
+        location_parts.append(neighborhood)
+    if city and (not neighborhood or city.lower() != neighborhood.lower()):
+        location_parts.append(city)
+    if state and state not in location_parts:
+        location_parts.append(state)
 
-    if city or neighborhood:
-        orgs = find_orgs(city, neighborhood)
-        loc_label = f"{neighborhood}, {city}" if (neighborhood and city and neighborhood.lower() != city.lower()) else (city or neighborhood)
+    display_loc = ", ".join(location_parts) if location_parts else None
+
+    if display_loc:
+        orgs = find_orgs(city=city, neighborhood=neighborhood, state=state)
         if orgs:
             reply = (
-                f"We identified **{len(orgs)} verified redistribution partner(s)** serving **{loc_label}**.\n\n"
-                "Browse the details below to review their operations or prepare a pre-filled donation enquiry."
+                f"We identified **{len(orgs)} verified redistribution partner(s)** active in **{display_loc}**.\n\n"
+                "Browse the matches below to view coverage details or prepare a pre-filled donation notification."
             )
         else:
             reply = (
-                f"We currently do not have a pre-indexed partner active in **{loc_label}** in this prototype database. "
-                "For unlisted areas, regional food banks or municipal relief services are often available through local council directories."
+                f"We currently do not have a pre-indexed partner active in **{display_loc}**. "
+                "For unlisted states or cities, local municipal disaster relief centers or temple/gurdwara langar networks often accept bulk safe donations."
             )
     elif intent == "greeting":
         reply = (
             "Hello! I am ready to help coordinate your food donation. "
-            "Let me know **what city or neighborhood you are located in** and a brief description of what you have to donate."
+            "Tell me **your state, city, or neighborhood** (e.g., *'Kerala'*, *'Delhi'*, *'Indiranagar'*), and what you have to donate."
         )
         orgs = []
     elif intent == "surplus":
         reply = (
-            "We can definitely find a destination for that surplus. "
-            "**Which city or area are you located in?**"
+            "We can definitely connect your surplus to community kitchens. "
+            "**Which state, city, or neighborhood are you located in?**"
         )
         orgs = []
     else:
         reply = (
             "I can assist with locating food rescue organizations.\n\n"
-            "Try specifying your location:\n"
-            "- *“Who takes extra banquet meals in Indiranagar, Bengaluru?”*\n"
+            "Try specifying your state or neighborhood:\n"
+            "- *“Who collects food donations in Kerala?”*\n"
             "- *“We have 30 lunch boxes left over in Bandra, Mumbai.”*\n"
-            "- *“Surplus food rescue near Connaught Place, Delhi.”*"
+            "- *“Surplus food rescue in Uttar Pradesh.”*"
         )
         orgs = []
 
     st.session_state.last_city = city
     st.session_state.last_neighborhood = neighborhood
+    st.session_state.last_state = state
+    st.session_state.display_location = display_loc
     st.session_state.last_results = orgs
     st.session_state.messages.append({"role": "assistant", "content": reply})
     st.rerun()
@@ -996,21 +1126,25 @@ if user_input:
 # MATCHED ORGANISATIONS SECTION
 # ------------------------------------------------------------
 if st.session_state.last_results:
-    loc_display = st.session_state.last_neighborhood or st.session_state.last_city
+    display_title = st.session_state.display_location or "Your Location"
     st.markdown("<div style='height: 20px;'></div>", unsafe_allow_html=True)
-    st.markdown(f"<div class=\"section-tag\">Results for {loc_display}</div>", unsafe_allow_html=True)
+    st.markdown(f"<div class=\"section-tag\">Results for {display_title}</div>", unsafe_allow_html=True)
 
     for index, org in enumerate(st.session_state.last_results):
         with st.container(border=True):
             head_col, action_col = st.columns([2.5, 1.5])
-            
+
             with head_col:
                 st.markdown(f"#### {org['name']}")
-                
+
                 tags_html = f"<span class='pill-meta'>{org['country']}</span>"
                 if org.get("state") and org["state"] != "Multi-State":
-                    tags_html += f"<span class='pill-meta'>{org['state']}</span>"
+                    tags_html += f"<span class='pill-state'>{org['state']}</span>"
+                elif org.get("state") == "Multi-State":
+                    tags_html += "<span class='pill-state'>Pan-India / Multi-State</span>"
+
                 tags_html += f"<span class='pill-meta'>{org['type']}</span>"
+
                 if org.get("is_hyperlocal"):
                     tags_html += "<span class='pill-local'>Direct Neighborhood Match</span>"
 
@@ -1022,6 +1156,10 @@ if st.session_state.last_results:
                 else:
                     coverage_str = ", ".join(org['cities'][:6]) + ("..." if len(org['cities']) > 6 else "")
                     st.caption(f"Key Hubs: {coverage_str}")
+
+                if org.get("supported_states"):
+                    states_display = ", ".join(org["supported_states"][:6]) + ("..." if len(org["supported_states"]) > 6 else "")
+                    st.caption(f"🗺️ State Coverage: {states_display}")
 
             with action_col:
                 st.markdown("<div style='height: 6px;'></div>", unsafe_allow_html=True)
@@ -1041,8 +1179,8 @@ if st.session_state.last_results:
 
     st.markdown("""
     <div class="callout-banner">
-        <strong>Important Safety Reminder:</strong> Food safety regulations require that perishable foods maintain temperature integrity.
-        Always verify whether the receiving agency accepts prepared meals, unpackaged items, or requires commercial packaging before dispatching.
+        <strong>Important Safety Reminder:</strong> Food safety guidelines require strict hot or cold chain maintenance.
+        Always verify whether the receiving agency accepts prepared meals, unpackaged items, or requires specific container types before dispatching.
     </div>
     """, unsafe_allow_html=True)
 
@@ -1053,27 +1191,27 @@ if st.session_state.request_recorded and st.session_state.last_results:
     selected_idx = st.session_state.selected_org
     if selected_idx < len(st.session_state.last_results):
         org = st.session_state.last_results[selected_idx]
-        city = st.session_state.last_city or "your area"
+        loc_str = st.session_state.display_location or "your locality"
 
         st.markdown("<div style='height: 20px;'></div>", unsafe_allow_html=True)
         st.markdown(f"<div class=\"section-tag\">Prepare Communication</div>", unsafe_allow_html=True)
-        
+
         with st.container(border=True):
             st.markdown(f"### Donation Notification for {org['name']}")
-            st.markdown(f"Generate a standardized notification for operations in **{city}**.")
+            st.markdown(f"Generate a standardized notification for operations in **{loc_str}**.")
 
             with st.form("donation_request_form"):
                 fc1, fc2 = st.columns(2)
                 with fc1:
                     name = st.text_input("Your Name / Establishment", placeholder="e.g., Green Garden Bistro")
-                    food = st.text_input("Food Item Description", placeholder="e.g., Chilled vegetarian pasta meals (freshly packed)")
+                    food = st.text_input("Food Item Description", placeholder="e.g., Chilled vegetarian meal boxes (freshly packed)")
                 with fc2:
                     email = st.text_input("Contact Email", placeholder="e.g., manager@greengarden.com")
-                    quantity = st.text_input("Quantity / Portions", placeholder="e.g., 35 individual containers")
+                    quantity = st.text_input("Quantity / Portions", placeholder="e.g., 50 meal packets")
 
                 notes = st.text_area(
-                    "Logistics & Temperature Notes",
-                    placeholder="e.g., Cooked at 2 PM, refrigerated since 4 PM. Available for pickup until 9 PM today."
+                    "Logistics & Condition Notes",
+                    placeholder="e.g., Prepared at 1 PM, refrigerated at 3 PM. Packed in disposable foil trays. Available for pickup till 8 PM."
                 )
 
                 submit_btn = st.form_submit_button("Generate Direct Email Link", use_container_width=True)
@@ -1082,9 +1220,9 @@ if st.session_state.request_recorded and st.session_state.last_results:
                 if not name or not email or not food or not quantity:
                     st.error("Please fill in all mandatory fields (Name, Email, Food, and Quantity).")
                 else:
-                    email_link = create_email_link(org, name, email, food, quantity, city, notes)
+                    email_link = create_email_link(org, name, email, food, quantity, loc_str, notes)
                     st.success("Enquiry message compiled!")
-                    
+
                     st.markdown(
                         f"Target Contact: `{org.get('contact_email', 'Official Channels')}`"
                     )
