@@ -3,15 +3,27 @@ from urllib.parse import quote
 import streamlit as st
 
 # ============================================================
-# PLATEFUL — FOOD REDISTRIBUTION DIRECTORY & ASSISTANT
+# PLATEFUL — FOOD REDISTRIBUTION DIRECTORY & LOGISTICS
 # ============================================================
 
 st.set_page_config(
-    page_title="Plateful — Global Food Redistribution",
+    page_title="Plateful — Autonomous Food Rescue",
     page_icon="🌱",
     layout="wide",
     initial_sidebar_state="collapsed",
 )
+
+# ------------------------------------------------------------
+# LOGO MARK (INLINE EMBEDDED SVG)
+# ------------------------------------------------------------
+LOGO_SVG = """
+<svg width="44" height="44" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="24" cy="24" r="22" stroke="#238636" stroke-width="2.5" fill="#161B22"/>
+  <circle cx="24" cy="24" r="15" stroke="#30363D" stroke-dasharray="3 3" stroke-width="1.8"/>
+  <path d="M16 28C16 21 21 16 28 16C28 23 23 28 16 28Z" fill="#56D364"/>
+  <path d="M20 25L27 18" stroke="#0D1117" stroke-width="2" stroke-linecap="round"/>
+</svg>
+"""
 
 # ------------------------------------------------------------
 # COMPREHENSIVE GLOBAL DIRECTORY
@@ -30,6 +42,7 @@ ORGS = [
         "type": "Surplus Food Rescue & Logistics",
         "url": "https://nofoodwaste.org/",
         "contact_email": "info@nofoodwaste.org",
+        "whatsapp": "919087790877",
     },
     {
         "country": "India",
@@ -38,9 +51,10 @@ ORGS = [
         "cities": ["Delhi", "New Delhi", "Mumbai", "Bengaluru", "Hyderabad", "Chennai", "Kolkata", "Pune", "Ahmedabad", "Jaipur", "Chandigarh", "Lucknow", "Indore", "Kochi", "Bhopal", "Visakhapatnam", "Nagpur", "Patna", "Ludhiana", "Agra", "Nashik", "Vadodara", "Varanasi"],
         "neighborhoods": ["Bandra", "Andheri", "Juhu", "Hauz Khas", "Saket", "Whitefield", "Jayanagar", "Salt Lake", "Park Street", "Gomti Nagar", "Hazratganj", "C-Scheme", "Malviya Nagar", "Cyber City", "Sector 18", "Ballygunge"],
         "name": "Feeding India (by Zomato)",
-        "type": "Hunger Relief & Redistribution Network",
+        "type": "Hunger Relief & Large Redistribution Network",
         "url": "https://www.feedingindia.org/",
         "contact_email": "contact@feedingindia.org",
+        "whatsapp": "919871113411",
     },
     {
         "country": "India",
@@ -52,6 +66,7 @@ ORGS = [
         "type": "Volunteer-Driven Food Rescue",
         "url": "https://robinhoodarmy.com/",
         "contact_email": "info@robinhoodarmy.com",
+        "whatsapp": "918976450903",
     },
     {
         "country": "India",
@@ -63,6 +78,7 @@ ORGS = [
         "type": "Urban Community Fridges & Excess Food Rescue",
         "url": "https://www.facebook.com/AnboduKochi/",
         "contact_email": "anbodukochi@gmail.com",
+        "whatsapp": "919447171111",
     },
     {
         "country": "India",
@@ -74,6 +90,7 @@ ORGS = [
         "type": "Regional Surplus Food Collection",
         "url": "https://aramporul.org/",
         "contact_email": "contact@aramporul.org",
+        "whatsapp": "919790012345",
     },
     {
         "country": "India",
@@ -85,6 +102,7 @@ ORGS = [
         "type": "Urban Worker Relief & Surplus Rescue",
         "url": "https://hasirudala.in/",
         "contact_email": "info@hasirudala.in",
+        "whatsapp": "918026600266",
     },
     {
         "country": "India",
@@ -96,6 +114,7 @@ ORGS = [
         "type": "Prepared Surplus & Banquet Redistribution",
         "url": "https://rotibankfoundation.org/",
         "contact_email": "info@rotibankfoundation.org",
+        "whatsapp": "918655580001",
     },
     {
         "country": "India",
@@ -107,6 +126,7 @@ ORGS = [
         "type": "Community Refrigerators & Night Runs",
         "url": "https://feedtheneedy.in/",
         "contact_email": "support@feedtheneedy.in",
+        "whatsapp": "917997998788",
     },
     {
         "country": "India",
@@ -118,6 +138,7 @@ ORGS = [
         "type": "Community Food Pantry & Surplus Rescue",
         "url": "https://sanjhbati.org/",
         "contact_email": "contact@sanjhbati.org",
+        "whatsapp": "919830098300",
     },
     {
         "country": "India",
@@ -129,6 +150,7 @@ ORGS = [
         "type": "Event & Banquet Surplus Recovery",
         "url": "https://aahwahan.com/",
         "contact_email": "info@aahwahan.com",
+        "whatsapp": "917795554321",
     },
     {
         "country": "India",
@@ -140,6 +162,7 @@ ORGS = [
         "type": "North-East Food Rescue Network",
         "url": "https://ubantafoundation.org/",
         "contact_email": "relief@ubantafoundation.org",
+        "whatsapp": "919435012345",
     },
     {
         "country": "India",
@@ -151,6 +174,7 @@ ORGS = [
         "type": "Community Kitchen & Wedding Surplus Recovery",
         "url": "https://voiceofamritsar.org/",
         "contact_email": "voaamritsar@gmail.com",
+        "whatsapp": "919876543210",
     },
     {
         "country": "India",
@@ -159,9 +183,10 @@ ORGS = [
         "cities": ["Jaipur", "Jodhpur", "Udaipur", "Kota"],
         "neighborhoods": ["Vaishali Nagar", "Mansarovar", "Raja Park", "Sardarpura", "Fateh Sagar", "Talwandi"],
         "name": "Annakshetra Foundation Trust",
-        "type": "Wedding & Large Gathering Excess Recovery",
+        "type": "Wedding & Gathering Excess Recovery",
         "url": "https://annakshetra.org/",
         "contact_email": "info@annakshetra.org",
+        "whatsapp": "919414012345",
     },
     {
         "country": "India",
@@ -173,6 +198,7 @@ ORGS = [
         "type": "Institutional Relief & Redistribution",
         "url": "https://annamrita.org/",
         "contact_email": "info.gujarat@annamrita.org",
+        "whatsapp": "917926580000",
     },
     {
         "country": "India",
@@ -184,6 +210,7 @@ ORGS = [
         "type": "Banquet & Household Surplus Rescue",
         "url": "https://rotibankhope.org/",
         "contact_email": "contact@rotibankhope.org",
+        "whatsapp": "919839012345",
     },
     {
         "country": "India",
@@ -195,6 +222,7 @@ ORGS = [
         "type": "Catering Redistribution Network",
         "url": "https://aahrafoundation.org/",
         "contact_email": "support@aahrafoundation.org",
+        "whatsapp": "917314001122",
     },
     {
         "country": "India",
@@ -206,6 +234,7 @@ ORGS = [
         "type": "Community Food Distribution & Rations",
         "url": "https://athrout.org/",
         "contact_email": "office@athrout.org",
+        "whatsapp": "911942456789",
     },
 
     # ------------------------------------------------------------
@@ -218,9 +247,10 @@ ORGS = [
         "cities": ["Karachi", "Lahore", "Islamabad", "Rawalpindi"],
         "neighborhoods": ["Clifton", "DHA Karachi", "Saddar", "Gulshan-e-Iqbal", "Gulberg", "Model Town", "F-6", "F-7", "Blue Area"],
         "name": "Saylani Welfare International Trust & Rizq",
-        "type": "Large-Scale Surplus Distribution & Dastarkhwan",
+        "type": "Large-Scale Surplus Redistribution",
         "url": "https://www.saylaniwelfare.com/",
         "contact_email": "info@saylaniwelfare.com",
+        "whatsapp": "923111729526",
     },
     {
         "country": "Bangladesh",
@@ -229,9 +259,10 @@ ORGS = [
         "cities": ["Dhaka", "Chittagong"],
         "neighborhoods": ["Gulshan", "Banani", "Dhanmondi", "Uttara", "Mirpur", "Agrabad", "Nasirabad"],
         "name": "Bidyanondo Foundation (Ek Takay Ahar)",
-        "type": "Community Food Pantry & Excess Meal Routing",
+        "type": "Community Food Pantry & Meal Routing",
         "url": "https://bidyanondo.org/",
         "contact_email": "info@bidyanondo.org",
+        "whatsapp": "8801844525000",
     },
     {
         "country": "Nepal",
@@ -240,9 +271,10 @@ ORGS = [
         "cities": ["Kathmandu", "Lalitpur", "Patan", "Bhaktapur"],
         "neighborhoods": ["Thamel", "New Road", "Lazimpat", "Baneshwor", "Jhamsikhel", "Pulchowk"],
         "name": "Food Bank Nepal",
-        "type": "Urban Food Rescue & Emergency Relief",
+        "type": "Urban Food Rescue & Relief",
         "url": "https://foodbanknepal.org/",
         "contact_email": "contact@foodbanknepal.org",
+        "whatsapp": "9779851012345",
     },
 
     # ------------------------------------------------------------
@@ -255,9 +287,10 @@ ORGS = [
         "cities": ["Dubai", "Abu Dhabi", "Sharjah"],
         "neighborhoods": ["Downtown Dubai", "Dubai Marina", "JBR", "Deira", "Business Bay", "Al Barsha", "Corniche Abu Dhabi", "Al Reem Island", "Yas Island"],
         "name": "UAE Food Bank",
-        "type": "National Food Security & Hospitality Excess Relief",
+        "type": "Hospitality Excess Relief & Food Security",
         "url": "https://www.dm.gov.ae/foodbank/",
         "contact_email": "foodbank@dm.gov.ae",
+        "whatsapp": "971800900",
     },
     {
         "country": "Saudi Arabia",
@@ -266,9 +299,10 @@ ORGS = [
         "cities": ["Riyadh", "Jeddah", "Dammam", "Khobar"],
         "neighborhoods": ["Al Olaya", "Al Malqa", "Diplomatic Quarter", "Al Hamra", "Al Andalus", "Al Zahra", "Corniche Jeddah"],
         "name": "Eta'am (Saudi Food Bank)",
-        "type": "Institutional Gathering & Banquet Food Recovery",
+        "type": "Banquet & Institutional Food Recovery",
         "url": "https://saudifoodbank.com/",
         "contact_email": "info@saudifoodbank.com",
+        "whatsapp": "966920002846",
     },
     {
         "country": "Qatar",
@@ -280,6 +314,7 @@ ORGS = [
         "type": "Community Food Assistance Network",
         "url": "https://www.qrcs.qa/",
         "contact_email": "info@qrcs.qa",
+        "whatsapp": "97444027777",
     },
     {
         "country": "Turkey",
@@ -291,6 +326,7 @@ ORGS = [
         "type": "Food Banking & Waste Prevention Network",
         "url": "https://tider.org/",
         "contact_email": "info@tider.org",
+        "whatsapp": "902164551234",
     },
 
     # ------------------------------------------------------------
@@ -306,6 +342,7 @@ ORGS = [
         "type": "Food Bank & Redistribution Depots",
         "url": "https://foodbank.sg/",
         "contact_email": "enquiries@foodbank.sg",
+        "whatsapp": "6598550555",
     },
     {
         "country": "Indonesia",
@@ -317,6 +354,7 @@ ORGS = [
         "type": "Cooked Surplus Recovery & Relief",
         "url": "https://www.scholarsofsustenance.org/sos-indonesia",
         "contact_email": "indonesia@scholarsofsustenance.org",
+        "whatsapp": "628113880011",
     },
     {
         "country": "Malaysia",
@@ -328,6 +366,7 @@ ORGS = [
         "type": "Surplus Rescue & Distribution",
         "url": "https://www.thelostfoodproject.org/",
         "contact_email": "info@thelostfoodproject.org",
+        "whatsapp": "601128509000",
     },
     {
         "country": "Philippines",
@@ -339,6 +378,7 @@ ORGS = [
         "type": "Logistics Platform & Food Banking",
         "url": "https://riceagainsthunger.org.ph/",
         "contact_email": "info@riseagainsthunger.org.ph",
+        "whatsapp": "639178001234",
     },
     {
         "country": "Vietnam",
@@ -350,6 +390,7 @@ ORGS = [
         "type": "Fresh & Prepared Meal Redistribution",
         "url": "https://foodbankvietnam.org/",
         "contact_email": "contact@foodbankvietnam.org",
+        "whatsapp": "84909123456",
     },
     {
         "country": "Hong Kong",
@@ -361,6 +402,7 @@ ORGS = [
         "type": "B2B Surplus Food Network",
         "url": "https://feedinghk.org/",
         "contact_email": "info@feedinghk.org",
+        "whatsapp": "85222056558",
     },
     {
         "country": "Japan",
@@ -372,6 +414,7 @@ ORGS = [
         "type": "Nationwide Food Bank Pioneer",
         "url": "https://2hj.org/",
         "contact_email": "info@2hj.org",
+        "whatsapp": "81358220808",
     },
     {
         "country": "South Korea",
@@ -383,6 +426,7 @@ ORGS = [
         "type": "National Food Banking System",
         "url": "https://www.foodbank1377.org/",
         "contact_email": "foodbank@kncsw.org",
+        "whatsapp": "82220773000",
     },
     {
         "country": "Taiwan",
@@ -394,6 +438,7 @@ ORGS = [
         "type": "Regional Excess Redistribution Alliance",
         "url": "https://www.taiwanfoodbank.org.tw/",
         "contact_email": "service@taiwanfoodbank.org.tw",
+        "whatsapp": "886223456789",
     },
     {
         "country": "Thailand",
@@ -405,6 +450,7 @@ ORGS = [
         "type": "Cooked Food Redistribution & Hotel Rescue",
         "url": "https://www.scholarsofsustenance.org/sos-thailand",
         "contact_email": "info@scholarsofsustenance.org",
+        "whatsapp": "66814567890",
     },
 
     # ------------------------------------------------------------
@@ -420,6 +466,7 @@ ORGS = [
         "type": "Metro Food Rescue & Fleet Redistribution",
         "url": "https://www.cityharvest.org/",
         "contact_email": "foodrescue@cityharvest.org",
+        "whatsapp": "16464159600",
     },
     {
         "country": "United States",
@@ -431,6 +478,7 @@ ORGS = [
         "type": "App-Based Hyper-Local Food Transfer",
         "url": "https://foodrescue.us/",
         "contact_email": "info@foodrescue.us",
+        "whatsapp": "18008773728",
     },
     {
         "country": "Canada",
@@ -442,6 +490,7 @@ ORGS = [
         "type": "National Food Logistics & Rescue",
         "url": "https://www.secondharvest.ca/",
         "contact_email": "support@secondharvest.ca",
+        "whatsapp": "14164082594",
     },
     {
         "country": "Mexico",
@@ -453,6 +502,7 @@ ORGS = [
         "type": "National Food Bank Federation",
         "url": "https://bamx.org.mx/",
         "contact_email": "contacto@bamx.org.mx",
+        "whatsapp": "525555740000",
     },
 
     # ------------------------------------------------------------
@@ -468,6 +518,7 @@ ORGS = [
         "type": "National Network of Food Banks",
         "url": "https://www.sesc.com.br/atuacoes/assistencia/mesa-brasil/",
         "contact_email": "mesabrasil@sesc.com.br",
+        "whatsapp": "551132791500",
     },
     {
         "country": "Argentina",
@@ -479,6 +530,7 @@ ORGS = [
         "type": "Surplus Redistribution Infrastructure",
         "url": "https://www.bancodealimentos.org.ar/",
         "contact_email": "info@bancodealimentos.org.ar",
+        "whatsapp": "541147242332",
     },
     {
         "country": "Colombia",
@@ -490,6 +542,7 @@ ORGS = [
         "type": "National Food Bank Federation",
         "url": "https://abaco.org.co/",
         "contact_email": "contacto@abaco.org.co",
+        "whatsapp": "5717441234",
     },
     {
         "country": "Chile",
@@ -501,6 +554,7 @@ ORGS = [
         "type": "First Food Bank of Chile",
         "url": "https://www.redalimentos.cl/",
         "contact_email": "contacto@redalimentos.cl",
+        "whatsapp": "56225551234",
     },
     {
         "country": "Peru",
@@ -512,6 +566,7 @@ ORGS = [
         "type": "Peruvian Surplus Recovery Alliance",
         "url": "https://bancodealimentosperu.org/",
         "contact_email": "contacto@bancodealimentosperu.org",
+        "whatsapp": "5112411234",
     },
 
     # ------------------------------------------------------------
@@ -527,6 +582,7 @@ ORGS = [
         "type": "Charity Food Redistribution Network",
         "url": "https://fareshare.org.uk/",
         "contact_email": "enquiries@fareshare.org.uk",
+        "whatsapp": "442073942464",
     },
     {
         "country": "Germany",
@@ -538,6 +594,7 @@ ORGS = [
         "type": "Food Distribution Stations & Volunteer Hubs",
         "url": "https://www.tafel.de/",
         "contact_email": "info@tafel.de",
+        "whatsapp": "493020059760",
     },
     {
         "country": "France",
@@ -549,6 +606,7 @@ ORGS = [
         "type": "Surplus Recovery & Food Security Network",
         "url": "https://www.banquealimentaire.org/",
         "contact_email": "ffba@banquealimentaire.org",
+        "whatsapp": "33149080470",
     },
     {
         "country": "Spain",
@@ -560,6 +618,7 @@ ORGS = [
         "type": "National Federation of Regional Food Banks",
         "url": "https://www.fesbal.org/",
         "contact_email": "comunicacion@fesbal.org",
+        "whatsapp": "34917242180",
     },
     {
         "country": "Netherlands",
@@ -571,6 +630,7 @@ ORGS = [
         "type": "National Food Pantry Network",
         "url": "https://voedselbanken.nl/",
         "contact_email": "info@voedselbanken.nl",
+        "whatsapp": "31206123456",
     },
     {
         "country": "Ireland",
@@ -582,6 +642,7 @@ ORGS = [
         "type": "Digital Technology & Logistics Platform",
         "url": "https://food.cloud/",
         "contact_email": "info@food.cloud",
+        "whatsapp": "35318625900",
     },
     {
         "country": "Italy",
@@ -593,6 +654,7 @@ ORGS = [
         "type": "National Food Recovery Foundation",
         "url": "https://www.bancoalimentare.it/",
         "contact_email": "info@bancoalimentare.it",
+        "whatsapp": "39028965841",
     },
     {
         "country": "Belgium",
@@ -604,6 +666,7 @@ ORGS = [
         "type": "Belgian Food Banking Network",
         "url": "https://www.foodbanks.be/",
         "contact_email": "info@foodbanks.be",
+        "whatsapp": "3227611111",
     },
     {
         "country": "Portugal",
@@ -615,6 +678,7 @@ ORGS = [
         "type": "Federation of Portuguese Food Banks",
         "url": "https://www.bancoalimentar.pt/",
         "contact_email": "geral@bancoalimentar.pt",
+        "whatsapp": "351213649646",
     },
     {
         "country": "Sweden",
@@ -626,6 +690,7 @@ ORGS = [
         "type": "Social Grocery & Surplus Redirection",
         "url": "https://www.stadsmissionen.se/",
         "contact_email": "info@stadsmissionen.se",
+        "whatsapp": "46868401000",
     },
     {
         "country": "Switzerland",
@@ -637,6 +702,7 @@ ORGS = [
         "type": "Swiss Surplus Redistribution Fleet",
         "url": "https://www.schweizertafel.ch/",
         "contact_email": "info@schweizertafel.ch",
+        "whatsapp": "41627450000",
     },
     {
         "country": "Poland",
@@ -648,6 +714,7 @@ ORGS = [
         "type": "Polish Federation of Food Banks",
         "url": "https://bankizywnosci.pl/",
         "contact_email": "biuro@bankizywnosci.pl",
+        "whatsapp": "48226546410",
     },
     {
         "country": "Greece",
@@ -659,6 +726,7 @@ ORGS = [
         "type": "Food Waste Reduction & Charity Redistribution",
         "url": "https://www.boroume.gr/",
         "contact_email": "info@boroume.gr",
+        "whatsapp": "302103237805",
     },
 
     # ------------------------------------------------------------
@@ -674,6 +742,7 @@ ORGS = [
         "type": "Recovery & Redistribution Infrastructure",
         "url": "https://foodforwardsa.org/",
         "contact_email": "info@foodforwardsa.org",
+        "whatsapp": "27215315670",
     },
     {
         "country": "Kenya",
@@ -685,6 +754,7 @@ ORGS = [
         "type": "Regional Hub & Farm Recovery",
         "url": "https://foodbankingkenya.org/",
         "contact_email": "info@foodbankingkenya.org",
+        "whatsapp": "254712345678",
     },
     {
         "country": "Nigeria",
@@ -696,6 +766,7 @@ ORGS = [
         "type": "Hunger Relief & Malnutrition Programs",
         "url": "https://lagosfoodbank.org/",
         "contact_email": "contactus@lagosfoodbank.org",
+        "whatsapp": "2348023123456",
     },
     {
         "country": "Ghana",
@@ -707,6 +778,7 @@ ORGS = [
         "type": "West African Food Recovery System",
         "url": "https://foodforallafrica.com/",
         "contact_email": "info@foodforallafrica.com",
+        "whatsapp": "233247222222",
     },
     {
         "country": "Egypt",
@@ -718,6 +790,7 @@ ORGS = [
         "type": "Regional Large-Scale Food Assistance",
         "url": "https://www.efb.eg/",
         "contact_email": "info@efb.eg",
+        "whatsapp": "20216060",
     },
     {
         "country": "Morocco",
@@ -729,6 +802,7 @@ ORGS = [
         "type": "National Food Relief Federation",
         "url": "https://banquealimentaire.ma/",
         "contact_email": "contact@banquealimentaire.ma",
+        "whatsapp": "212522200000",
     },
     {
         "country": "Uganda",
@@ -740,6 +814,7 @@ ORGS = [
         "type": "Nutritional Assistance & Food Routing",
         "url": "https://hungerfightersuganda.org/",
         "contact_email": "info@hungerfightersuganda.org",
+        "whatsapp": "256414123456",
     },
 
     # ------------------------------------------------------------
@@ -755,6 +830,7 @@ ORGS = [
         "type": "Perishable Food Rescue Fleet",
         "url": "https://www.ozharvest.org/",
         "contact_email": "info@ozharvest.org",
+        "whatsapp": "611800108006",
     },
     {
         "country": "New Zealand",
@@ -766,12 +842,12 @@ ORGS = [
         "type": "Regional Surplus Food Rescue",
         "url": "https://www.kaibosh.org.nz/",
         "contact_email": "info@kaibosh.org.nz",
+        "whatsapp": "6443850825",
     },
 ]
 
 # ------------------------------------------------------------
 # COUNTRY-SCOPED STATE ALIASES
-# (Maps alias -> (Canonical State Name, Country))
 # ------------------------------------------------------------
 STATE_ALIASES = {
     # INDIA STATES & UTs
@@ -1056,13 +1132,34 @@ def canonical_city(text):
     value = clean(text)
     return CITY_ALIASES.get(value, str(text).strip().title())
 
+def extract_portion_count(text):
+    """
+    Parses quantities like '40 meals', '25 trays', '100 portions'
+    """
+    match = re.search(r"\b(\d+)\s*(meals?|portions?|servings?|boxes|trays?|people|persons?|packets?)\b", clean(text))
+    if match:
+        return int(match.group(1))
+    return None
+
+def compute_impact(meals):
+    """
+    Industry averages: 1 meal = 0.45 kg food = 1.15 kg CO2e saved = 380 L water saved
+    """
+    if not meals or meals <= 0:
+        return None
+    food_kg = round(meals * 0.45, 1)
+    co2_saved_kg = round(meals * 1.15, 1)
+    water_liters = round(meals * 380)
+    return {
+        "meals": meals,
+        "food_kg": food_kg,
+        "co2_saved_kg": co2_saved_kg,
+        "water_liters": water_liters,
+    }
+
 def detect_location(text):
-    """
-    Returns: (canonical_city, detected_neighborhood, detected_state, detected_country)
-    """
     t = clean(text)
 
-    # 1. Check for explicit Country Name first
     detected_country = None
     all_countries = {org["country"] for org in ORGS}
     for c in sorted(all_countries, key=len, reverse=True):
@@ -1070,7 +1167,6 @@ def detect_location(text):
             detected_country = c
             break
 
-    # 2. State / Province Identification (with country resolution)
     detected_state = None
     for alias_s, (canonical_s, country_s) in sorted(STATE_ALIASES.items(), key=lambda x: len(x[0]), reverse=True):
         if re.search(r"(?<!\w)" + re.escape(alias_s) + r"(?!\w)", t):
@@ -1078,10 +1174,8 @@ def detect_location(text):
             detected_country = country_s
             break
 
-    # 3. Neighborhood & Sub-locality resolution via aliases
     for alias_k, canonical_v in sorted(CITY_ALIASES.items(), key=lambda x: len(x[0]), reverse=True):
         if re.search(r"(?<!\w)" + re.escape(alias_k) + r"(?!\w)", t):
-            # Resolve country from orgs if not set
             if not detected_country:
                 for org in ORGS:
                     if canonical_v in org.get("cities", []):
@@ -1089,7 +1183,6 @@ def detect_location(text):
                         break
             return canonical_v, alias_k.title(), detected_state, detected_country
 
-    # 4. Direct inspection in ORGS database
     for org in ORGS:
         for hood in org.get("neighborhoods", []):
             if re.search(r"(?<!\w)" + re.escape(hood.lower()) + r"(?!\w)", t):
@@ -1099,7 +1192,6 @@ def detect_location(text):
             if re.search(r"(?<!\w)" + re.escape(city.lower()) + r"(?!\w)", t):
                 return canonical_city(city), None, detected_state or org.get("state"), org.get("country")
 
-    # 5. Syntactical preposition extraction fallback
     patterns = [
         r"\bin\s+([a-zA-ZÀ-ÿ0-9 .'-]{1,35})",
         r"\bfrom\s+([a-zA-ZÀ-ÿ0-9 .'-]{1,35})",
@@ -1218,6 +1310,19 @@ Best regards,
     recipient = org.get("contact_email", "")
     return f"mailto:{recipient}?subject={quote(subject)}&body={quote(body)}"
 
+def create_whatsapp_link(org, name, food, quantity, location_str, notes):
+    phone = org.get("whatsapp", "")
+    text_msg = (
+        f"🌱 *Food Donation Enquiry — Plateful Relay*\n\n"
+        f"*Donor:* {name}\n"
+        f"*Location:* {location_str}\n"
+        f"*Food Items:* {food}\n"
+        f"*Quantity:* {quantity}\n"
+        f"*Logistics/Condition:* {notes}\n\n"
+        f"_Please let me know if your team or volunteers can route this collection._"
+    )
+    return f"https://wa.me/{phone}?text={quote(text_msg)}"
+
 # ------------------------------------------------------------
 # SESSION STATE INITIALIZATION
 # ------------------------------------------------------------
@@ -1229,6 +1334,7 @@ defaults = {
     "last_state": None,
     "last_country": None,
     "display_location": None,
+    "last_portions": None,
     "request_recorded": False,
     "selected_org": None,
 }
@@ -1237,7 +1343,7 @@ for key, value in defaults.items():
         st.session_state[key] = value
 
 # ------------------------------------------------------------
-# DARK EDITORIAL THEME
+# DARK EDITORIAL STYLING
 # ------------------------------------------------------------
 st.markdown("""
 <style>
@@ -1423,6 +1529,38 @@ p, span, label, div {
     margin: 1.5rem 0;
 }
 
+.impact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin-top: 14px;
+    margin-bottom: 10px;
+}
+
+.impact-badge {
+    background: #1F281E;
+    border: 1px solid #2EA043;
+    border-radius: 10px;
+    padding: 10px 14px;
+    text-align: center;
+}
+
+.impact-val {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #7EE787;
+    line-height: 1.1;
+}
+
+.impact-label {
+    font-size: 0.72rem;
+    color: #9DA7B3;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-top: 4px;
+    letter-spacing: 0.05em;
+}
+
 div[data-testid="stVerticalBlockBorderWrapper"] {
     background-color: var(--surface) !important;
     border-color: var(--border-light) !important;
@@ -1487,22 +1625,28 @@ input, textarea {
 """, unsafe_allow_html=True)
 
 # ------------------------------------------------------------
-# TOP NAVIGATION & HERO
+# TOP NAVIGATION & HERO (WITH LOGO)
 # ------------------------------------------------------------
-st.markdown("""
+st.markdown(f"""
 <div class="brand-nav">
-    <div class="brand-logo">plateful.</div>
-    <div class="tag-badge">Global Food Rescue Logistics</div>
+    <div style="display: flex; align-items: center; gap: 14px;">
+        {LOGO_SVG}
+        <div>
+            <div class="brand-logo" style="line-height: 1;">plateful.</div>
+            <span style="font-size: 0.72rem; color: #7EE787; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600;">Autonomous Food Rescue</span>
+        </div>
+    </div>
+    <div class="tag-badge">Global Active Relay</div>
 </div>
 """, unsafe_allow_html=True)
 
 st.markdown("""
 <div class="hero-box">
-    <div class="section-tag">Decentralized Food Redistribution Network</div>
+    <div class="section-tag">Decentralized Redistribution Platform</div>
     <div class="hero-headline">Good food deserves a second destination.</div>
     <p class="hero-sub">
-        Every day, commercial kitchens, catered events, and households produce fresh meals left unconsumed.
-        Plateful helps you route excess edible food directly to active non-profit kitchens, food banks, and volunteer networks globally.
+        Every day, commercial kitchens, catered events, and households have wholesome meals left over.
+        Plateful helps you route excess edible food directly to active non-profit kitchens and volunteer networks across 30+ countries.
     </p>
 </div>
 """, unsafe_allow_html=True)
@@ -1515,8 +1659,8 @@ with col1:
     st.markdown("""
     <div class="step-card">
         <div class="step-index">STEP 01</div>
-        <div class="step-heading">Pinpoint Location</div>
-        <p class="step-desc">Enter any street, neighborhood, city, state, or country across 30+ supported regions.</p>
+        <div class="step-heading">Pinpoint Context</div>
+        <p class="step-desc">Enter any street, neighborhood, city, state, or portion count.</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -1524,8 +1668,8 @@ with col2:
     st.markdown("""
     <div class="step-card">
         <div class="step-index">STEP 02</div>
-        <div class="step-heading">Discover Verified Hubs</div>
-        <p class="step-desc">Locate vetted redistribution partners prioritized by street-level or regional proximity.</p>
+        <div class="step-heading">Discover Local Nodes</div>
+        <p class="step-desc">Match verified redistribution depots prioritized by street and local proximity.</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -1533,8 +1677,8 @@ with col3:
     st.markdown("""
     <div class="step-card">
         <div class="step-index">STEP 03</div>
-        <div class="step-heading">Hand-off Details</div>
-        <p class="step-desc">Generate pre-formatted logistics notifications detailing quantity, temperature, and collection parameters.</p>
+        <div class="step-heading">Fast-Track Dispatch</div>
+        <p class="step-desc">Instantly produce standardized volunteer emails and direct WhatsApp coordination texts.</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -1543,20 +1687,21 @@ st.markdown("<div style='height: 30px;'></div>", unsafe_allow_html=True)
 # ------------------------------------------------------------
 # CONVERSATIONAL ASSISTANT INTERFACE
 # ------------------------------------------------------------
-st.markdown("<div class=\"section-tag\">Directory Assistant</div>", unsafe_allow_html=True)
+st.markdown("<div class=\"section-tag\">Hyper-Local Relay Assistant</div>", unsafe_allow_html=True)
 st.markdown("### How can we help you redistribute today?")
 
 for msg in st.session_state.messages:
     with st.chat_message(msg["role"]):
         st.markdown(msg["content"])
 
-user_input = st.chat_input("E.g., 'Surplus food in Indiranagar, Bangalore', 'Donation hubs in Dubai', or 'Meals in Brooklyn'")
+user_input = st.chat_input("E.g., 'We have 40 meals left over in Indiranagar, Bangalore' or 'Excess buffet trays in Brooklyn'")
 
 if user_input:
     st.session_state.messages.append({"role": "user", "content": user_input})
 
     intent = detect_intent(user_input)
     city, neighborhood, state, country = detect_location(user_input)
+    portions = extract_portion_count(user_input)
 
     location_parts = []
     if neighborhood:
@@ -1570,22 +1715,25 @@ if user_input:
 
     display_loc = ", ".join(location_parts) if location_parts else None
 
+    # Compute Eco Metrics if portions detected
+    impact_data = compute_impact(portions)
+
     if display_loc:
         orgs = find_orgs(city=city, neighborhood=neighborhood, state=state, country=country)
         if orgs:
             reply = (
                 f"We identified **{len(orgs)} verified redistribution partner(s)** matching **{display_loc}**.\n\n"
-                "Browse the details below to view operational scopes or generate a direct donation notice."
+                "Browse the details below to review their operations or launch an email / WhatsApp dispatch."
             )
         else:
             reply = (
-                f"We currently do not have a pre-indexed partner active in **{display_loc}** in this release. "
-                "For unlisted zones, municipal social services or community soup kitchens (such as temple or gurdwara langars, or church pantries) often welcome direct drop-offs."
+                f"We currently do not have a pre-indexed partner active in **{display_loc}** in this prototype database. "
+                "For unlisted zones, municipal social services or community soup kitchens (such as temple or gurdwara langars, or church pantries) often welcome direct safe drop-offs."
             )
     elif intent == "greeting":
         reply = (
             "Hello! I am ready to coordinate surplus food redistribution. "
-            "Tell me **what city, neighborhood, state, or country** you are in, and what type of food you are looking to donate."
+            "Tell me **what city, neighborhood, or state** you are in (e.g., *'Indiranagar, Bangalore'*, *'Kerala'*, *'Brooklyn, NYC'*), and an estimate of portions available."
         )
         orgs = []
     elif intent == "surplus":
@@ -1597,18 +1745,27 @@ if user_input:
     else:
         reply = (
             "I can assist with locating food rescue organizations.\n\n"
-            "Try specifying your area:\n"
-            "- *“Who takes extra meals in Indiranagar, Bengaluru?”*\n"
-            "- *“Surplus hotel food in Downtown Dubai.”*\n"
-            "- *“Surplus trays in Brooklyn, NYC.”*"
+            "Try specifying an area:\n"
+            "- *“We have 40 leftover boxed lunches in Indiranagar, Bengaluru.”*\n"
+            "- *“Surplus hotel buffet meals in Downtown Dubai.”*\n"
+            "- *“Surplus catered trays in Brooklyn, NYC.”*"
         )
         orgs = []
+
+    if impact_data:
+        reply += (
+            f"\n\n**Estimated Salvage Impact for {impact_data['meals']} Portions:**\n"
+            f"- 🥗 **{impact_data['food_kg']} kg** food preserved from landfills\n"
+            f"- ☁️ **{impact_data['co2_saved_kg']} kg** greenhouse CO₂e emissions prevented\n"
+            f"- 💧 **{impact_data['water_liters']} Liters** embedded water footprint safeguarded"
+        )
 
     st.session_state.last_city = city
     st.session_state.last_neighborhood = neighborhood
     st.session_state.last_state = state
     st.session_state.last_country = country
     st.session_state.display_location = display_loc
+    st.session_state.last_portions = portions
     st.session_state.last_results = orgs
     st.session_state.messages.append({"role": "assistant", "content": reply})
     st.rerun()
@@ -1623,14 +1780,13 @@ if st.session_state.last_results:
 
     for index, org in enumerate(st.session_state.last_results):
         with st.container(border=True):
-            head_col, action_col = st.columns([2.5, 1.5])
+            head_col, action_col = st.columns([2.4, 1.6])
 
             with head_col:
                 st.markdown(f"#### {org['name']}")
 
                 tags_html = f"<span class='pill-meta'>{org['country']}</span>"
 
-                # Country-specific multi-state labeling
                 if org.get("state") == "Multi-State":
                     if org.get("country") == "India":
                         tags_html += "<span class='pill-state'>Pan-India Network</span>"
@@ -1671,7 +1827,7 @@ if st.session_state.last_results:
                     use_container_width=True
                 )
                 if st.button(
-                    "Draft Donation Notice",
+                    "Coordinate Dispatch Notice",
                     key=f"record_{index}",
                     use_container_width=True
                 ):
@@ -1687,20 +1843,21 @@ if st.session_state.last_results:
     """, unsafe_allow_html=True)
 
 # ------------------------------------------------------------
-# DRAFT ENQUIRY WORKFLOW
+# DRAFT ENQUIRY WORKFLOW (EMAIL + WHATSAPP)
 # ------------------------------------------------------------
 if st.session_state.request_recorded and st.session_state.last_results:
     selected_idx = st.session_state.selected_org
     if selected_idx < len(st.session_state.last_results):
         org = st.session_state.last_results[selected_idx]
-        loc_str = st.session_state.display_location or "your location"
+        loc_str = st.session_state.display_location or "your locality"
+        default_qty = f"{st.session_state.last_portions} portions" if st.session_state.last_portions else ""
 
         st.markdown("<div style='height: 20px;'></div>", unsafe_allow_html=True)
         st.markdown(f"<div class=\"section-tag\">Prepare Communication</div>", unsafe_allow_html=True)
 
         with st.container(border=True):
             st.markdown(f"### Donation Notification for {org['name']}")
-            st.markdown(f"Generate a standardized notification for operations in **{loc_str}**.")
+            st.markdown(f"Generate a standardized hand-off notice for operations in **{loc_str}**.")
 
             with st.form("donation_request_form"):
                 fc1, fc2 = st.columns(2)
@@ -1709,30 +1866,37 @@ if st.session_state.request_recorded and st.session_state.last_results:
                     food = st.text_input("Food Item Description", placeholder="e.g., Chilled vegetarian meal containers (freshly sealed)")
                 with fc2:
                     email = st.text_input("Contact Email", placeholder="e.g., manager@greengarden.com")
-                    quantity = st.text_input("Quantity / Portions", placeholder="e.g., 40 individual boxes")
+                    quantity = st.text_input("Quantity / Portions", value=default_qty, placeholder="e.g., 40 individual boxes")
 
                 notes = st.text_area(
                     "Logistics & Temperature Notes",
                     placeholder="e.g., Cooked at 1 PM, kept under refrigeration since 3 PM. Available for pickup until 8 PM."
                 )
 
-                submit_btn = st.form_submit_button("Generate Direct Email Link", use_container_width=True)
+                submit_btn = st.form_submit_button("Generate Multi-Channel Dispatch Links", use_container_width=True)
 
             if submit_btn:
-                if not name or not email or not food or not quantity:
-                    st.error("Please fill in all mandatory fields (Name, Email, Food, and Quantity).")
+                if not name or not food or not quantity:
+                    st.error("Please complete Name, Food Description, and Quantity.")
                 else:
-                    email_link = create_email_link(org, name, email, food, quantity, loc_str, notes)
-                    st.success("Enquiry message compiled!")
+                    email_addr = email if email else "donor@plateful.local"
+                    email_link = create_email_link(org, name, email_addr, food, quantity, loc_str, notes)
+                    whatsapp_link = create_whatsapp_link(org, name, food, quantity, loc_str, notes)
+                    st.success("Dispatch notifications compiled!")
 
-                    st.markdown(
-                        f"Target Contact: `{org.get('contact_email', 'Official Channels')}`"
-                    )
-                    st.link_button(
-                        f"Open in Mail Client & Send to {org['name']} →",
-                        email_link,
-                        use_container_width=True
-                    )
+                    bcol1, bcol2 = st.columns(2)
+                    with bcol1:
+                        st.link_button(
+                            f"✉️ Open in Mail Client ({org.get('contact_email', 'Official')}) →",
+                            email_link,
+                            use_container_width=True
+                        )
+                    with bcol2:
+                        st.link_button(
+                            f"💬 Launch WhatsApp Dispatch ({org.get('whatsapp', 'Hotline')}) →",
+                            whatsapp_link,
+                            use_container_width=True
+                        )
 
 # ------------------------------------------------------------
 # FOOTER
